@@ -1,0 +1,256 @@
+export const CHARACTERS = [
+    {
+        name: ["Monkey D. Luffy", "Luffy", "Straw Hat Luffy"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "Paramecia",
+        haki: ["Armament", "Observation", "Conquerors"],
+        bounty: 3000000000,
+        height: 174,
+        origin: "East Blue",
+        firstarc: "Romance Dawn"
+    },
+    {
+        name: ["Roronoa Zoro", "Zoro", "Roronoa Zolo", "Zolo", "Pirate Hunter"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: ["Armament", "Observation", "Conquerors"],
+        bounty: 1111000000,
+        height: 181,
+        origin: "East Blue",
+        firstarc: "Romance Dawn"
+    },
+    {
+        name: ["Nami", "Cat Burglar"],
+        gender: "Female",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: [],
+        bounty: 366000000,
+        height: 170,
+        origin: "East Blue",
+        firstarc: "Orange Town"
+    },
+    {
+        name: ["Usopp", "Sogeking", "King of Snipers", "God"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: ["Observation"],
+        bounty: 200000000,
+        height: 176,
+        origin: "East Blue",
+        firstarc: "Syrup Village"
+    },
+    {
+        name: ["Vinsmoke Sanji", "Sanji", "Black Leg", "Soba Mask"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: ["Armament", "Observation"],
+        bounty: 1770000000,
+        height: 180,
+        origin: "North Blue",
+        firstarc: "Baratie"
+    },
+    {
+        name: ["Tony Tony Chopper", "Chopper", "Cotton Candy Lover"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "Zoan",
+        haki: [],
+        bounty: 1000,
+        height: 90,
+        origin: "Grand Line",
+        firstarc: "Drum Island"
+    },
+    {
+        name: ["Nico Robin", "Robin", "Miss All Sunday", "Devil Child", "Light of the Revolution"],
+        gender: "Female",
+        affiliation: "Strawhat Pirates",
+        df: "Paramecia",
+        haki: [],
+        bounty: 930000000,
+        height: 188,
+        origin: "West Blue",
+        firstarc: "Whisky Peak"
+    },
+    {
+        name: ["Franky", "Iron Man", "Cyborg", "Cutty Flam"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: [],
+        bounty: 944000000,
+        height: 240,
+        origin: "Grand Line",
+        firstarc: "Water 7"
+    },
+    {
+        name: ["Brook", "Soul King", "Demon King", "Humming Brook", "Bone-kichi", "The Starving Skeleton"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "Paramecia",
+        haki: [],
+        bounty: 383000000,
+        height: 277,
+        origin: "West Blue",
+        firstarc: "Thriller Bark"
+    },
+    {
+        name: ["Jinbe", "Knight of the Sea", "First Son of the Sea", "Boss Jinbe"],
+        gender: "Male",
+        affiliation: "Strawhat Pirates",
+        df: "None",
+        haki: ["Armament", "Observation"],
+        bounty: 4380000000,
+        height: 301,
+        origin: "Grand Line",
+        firstarc: "Impel Down"
+    },
+    {
+        name: ["Buggy The Clown", "Buggy"],
+        gender: "Male",
+        affiliation: "Cross Guild",
+        df: "Paramecia",
+        haki: [],
+        bounty: 3189000000,
+        height: 192,
+        origin: "Grand Line",
+        firstarc: "Orange Town"
+    },
+    {
+        name: ["Alvida", "Iron-Mace"],
+        gender: "Female",
+        affiliation: "Cross Guild",
+        df: "Paramecia",
+        haki: [],
+        bounty: 5000000,
+        height: 198,
+        origin: "East Blue",
+        firstarc: "Romance Dawn"
+    },
+    {
+        name: ["Crocus"],
+        gender: "Male",
+        affiliation: "Roger Pirates",
+        df: "None",
+        haki: ["Observation"],
+        bounty: 0,
+        height: 203,
+        origin: "Grand Line",
+        firstarc: "Reverse Mountain"
+    },
+    {
+        name: ["Gecko Moria", "Moria", "Gecko"],
+        gender: "Male",
+        affiliation: "Thriller Bark Pirates",
+        df: "Paramecia",
+        haki: [],
+        bounty: 320000000,
+        height: 692,
+        origin: "West Blue",
+        firstarc: "Thriller Bark"
+    },
+    {
+        name: ["Crocodile", "Mr. 0"],
+        gender: "Male",
+        affiliation: "Cross Guild",
+        df: "Logia",
+        haki: [],
+        bounty: 1965000000,
+        height: 253,
+        origin: "Grand Line",
+        firstarc: "Little Garden"
+    },
+    {
+        name: ["Carrot"],
+        gender: "Female",
+        affiliation: "Mokomo Dukedom",
+        df: "None",
+        haki: [],
+        bounty: 0,
+        height: 161,
+        origin: "Grand Line",
+        firstarc: "Zou"
+    },
+    {
+        name: ["Pedro"],
+        gender: "Male",
+        affiliation: "Mokomo Dukedom",
+        df: "None",
+        haki: ["Armament", "Observation"],
+        bounty: 382000000,
+        height: 233,
+        origin: "Grand Line",
+        firstarc: "Zou"
+    },
+    {
+        name: ["Arlong", "Arlong the Saw"],
+        gender: "Male",
+        affiliation: "Arlong Pirates",
+        df: "None",
+        haki: [],
+        bounty: 20000000,
+        height: 263,
+        origin: "Grand Line",
+        firstarc: "Arlong Park"
+    },
+    {
+        name: ["Shanks", "Red-Haired Shanks"],
+        gender: "Male",
+        affiliation: "Red Hair Pirates",
+        df: "None",
+        haki: ["Armament", "Observation", "Conquerors"],
+        bounty: 4048900000,
+        height: 199,
+        origin: "West Blue",
+        firstarc: "Romance Dawn"
+    },
+    {
+        name: ["Blackbeard", "Marshall D. Teach"],
+        gender: "Male",
+        affiliation: "Blackbeard Pirates",
+        df: "Paramecia",
+        haki: ["Armament", "Observation", "Conquerors"],
+        bounty: 3996000000,
+        height: 344,
+        origin: "Grand Line",
+        firstarc: "Jaya"
+    },
+    {
+        name: ["Trafalgar D. Water Law", "Trafalgar Law", "Law"],
+        gender: "Male",
+        affiliation: "Heart Pirates",
+        df: "Paramecia",
+        haki: ["Armament", "Observation"],
+        bounty: 3000000000,
+        height: 191,
+        origin: "North Blue",
+        firstarc: "Sabaody Archipelago"
+    },
+    {
+        name: ["Eustass Kid", "Kid", "Useless D. Mid"],
+        gender: "Male",
+        affiliation: "Kid Pirates",
+        df: "Paramecia",
+        haki: ["Armament", "Observation"],
+        bounty: 3000000000,
+        height: 205,
+        origin: "South Blue",
+        firstarc: "Sabaody Archipelago"
+    },
+    {
+        name: ["Dorry"],
+        gender: "Male",
+        affiliation: "Giant Warrior Pirates",
+        df: "None",
+        haki: [],
+        bounty: 1800000000,
+        height: 2260,
+        origin: "Grand Line",
+        firstarc: "Little Garden"
+    }
+    
+]
