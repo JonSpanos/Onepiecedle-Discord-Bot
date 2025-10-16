@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
 dotenv.config({ path: "../.env" });
@@ -8,6 +8,37 @@ const port = 3001;
 
 // Allow express to parse JSON bodies
 app.use(express.json());
+
+app.post("/api/get-player", async (req, res) => {
+  const {access_token} = req.body
+  const response = await fetch("https://discord.com/api/v10/users/@me", {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    }
+  })
+
+  const data = await response.json()
+  res.json(data)
+})
+
+app.post("/api/send-msg", async (req, res) => {
+  const { channelId, message } = req.body
+
+  const response = await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bot ${process.env.DISCORD_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({content: message}),
+  })
+
+  const data = await response.json()
+  res.json(data)
+
+})
 
 app.post("/api/token", async (req, res) => {
   
