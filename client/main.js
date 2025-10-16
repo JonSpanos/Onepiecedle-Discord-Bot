@@ -108,7 +108,6 @@ document.querySelector('#app').innerHTML = `
     <img src="${strawhatJollyRoger}" class="logo" alt="" />
     <h2>Guess today's One Piece character!</h2>
     <h3 id="guess_total">Number of guesses: 0</h3>
-    <h3>${CHARACTER_TO_GUESS.name[0]}</h3>
     <h3 id="testing"></h3>
     
     <div id="guess_board">
