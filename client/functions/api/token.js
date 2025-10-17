@@ -12,7 +12,7 @@ export async function onRequest(context) {
     },
     body: new URLSearchParams({
       client_id: context.env.VITE_DISCORD_CLIENT_ID,
-      client_secret: context.env.VITE_DISCORD_CLIENT_SECRET,
+      client_secret: context.env.DISCORD_CLIENT_SECRET,
       grant_type: "authorization_code",
       code,
     }),

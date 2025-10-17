@@ -1,6 +1,6 @@
 // Import the SDK
 import { DiscordSDK } from "@discord/embedded-app-sdk";
-import { CHARACTERS } from "./constants.js"
+import { CHARACTERS } from "./constants.ts"
 import "./style.css";
 
 // Images

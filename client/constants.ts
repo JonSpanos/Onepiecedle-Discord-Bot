@@ -114,7 +114,12 @@ export const CHARACTERS = [
     addCharacter(["Eustass Kid", "Kid", "Useless Mid", "Mid"], "Male", "Kid Pirates", "Paramecia", [armament, observation], 3000000000, 205, "South Blue", ARCS.SABAODY),
     addCharacter(["Killer", "Kamazo"], "Male", "Kid Pirates", "Zoan", [armament, observation], 200000000, 195, "South Blue", ARCS.SABAODY),
 
-
+    addCharacter(["Tsuru"], "Female", "Marines", "Paramecia", [armament, observation], 500000000, 204, "North Blue", ARCS.JAYA),
+    addCharacter(["Monkey D. Garp", "Garp"], "Male", "Marines", "None", [armament, observation, conquerors], 3000000000, 287, "East Blue", ARCS.ARLONGPARK),
+    addCharacter(["Nefertari Vivi", "Vivi", "Ms. Wednesday"], "Female", "Alabasta Kingdom", "None", [], 0, 169, "Grand Line", ARCS.REVERSEMOUNTAIN),
+    addCharacter(["Nefertari Cobra", "Cobra", "King of Alabasta"], "Male", "Alabasta Kingdom", "None", [], 0, 182, "Grand Line", ARCS.DRUMISLAND),
+    addCharacter(["Boa Hancock", "Hancock", "Pirate Empress"], "Female", "Kuja Pirates", "Paramecia", [armament, observation, conquerors], 1659000000, 191, "Calm Belt", ARCS.AMAZONLILY),
+    addCharacter(["Donquixote Rosinante", "Rosinante", "Corazon"], "Male", "Marines", "Paramecia", [], 0, 293, "Red Line", ARCS.DRESSROSA),
     addCharacter(["Crocus"], "Male", "Roger Pirates", "None", [observation], 0, 203, "Grand Line", ARCS.REVERSEMOUNTAIN),
     addCharacter(["Bartholomew Kuma", "Kuma"], "Male", "Revolutionary Army", "Paramecia", [armament, observation], 296000000, 689, "South Blue", ARCS.JAYA),
     addCharacter(["Carrot"], "Female", "Mokomo Dukedom", "None", [], 0, 161, "Grand Line", ARCS.ZOU),
@@ -124,7 +129,7 @@ export const CHARACTERS = [
     addCharacter(["Hatchan", "Hatchi"], "Male", "Takoyaki 8", "None", [], 8000000, 220, "East Blue", ARCS.ARLONGPARK),
 ]
 
-function addCharacter(name, gender, affiliation, df = "None", haki = [], bounty, height, origin, firstarc) {
+function addCharacter(name : String[], gender : String, affiliation : String, df : String, haki : String[], bounty : Number, height : Number, origin : String, firstarc : String) {
     return {
         name,
         gender,
