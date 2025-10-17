@@ -333,7 +333,7 @@ async function insertCharInfoInRow(char) {
       }
       box.append(arrow)
     } else if (curr_emoji != ":green_square:" && info === "firstarc") {
-      // Add arrows to indicate if guessed guessed arc is before or after
+      // Add arrows to indicate if guessed arc is before or after
       let arrow = document.createElement("div")
       if (ARCS.indexOf(char[info]) < ARCS.indexOf(CHARACTER_TO_GUESS[info])){
         arrow.className = "uparrow"
