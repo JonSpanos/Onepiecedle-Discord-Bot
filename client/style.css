@@ -117,15 +117,30 @@ button:focus-visible {
 
 
 #guess_board {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 10px; /* space between rows */
 }
 
 .row {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   gap: 10px; /* space between boxes */
+}
+
+.header {
+  position:relative;
+  width: 75px;
+  height: 30px;
+  display: flex;
+  border: 1px solid transparent;
+  border-bottom: 1px solid;
+  border-radius: 8%;
+  margin-bottom: 0px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink:0;
+  flex-grow: 1;
 }
 
 .box {
@@ -141,6 +156,7 @@ button:focus-visible {
   font-weight: bold;
   animation: flip 1s ease-in-out forwards; /* Adding animation */
   transform-style: preserve-3d; /* Required for 3D flipping */
+  flex-shrink:0;
 }
 
 @keyframes flip {
@@ -155,19 +171,6 @@ button:focus-visible {
     transform: rotateY(360deg); /* Complete flip */
     opacity: 100%
   }
-}
-
-.header {
-  position:relative;
-  width: 75px;
-  height: 30px;
-  display: flex;
-  border: 1px solid transparent;
-  border-bottom: 1px solid;
-  border-radius: 8%;
-  margin-bottom: 0px;
-  justify-content: center;
-  align-items: center;
 }
 
 .downarrow {
@@ -225,4 +228,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Styles for screens up to 480px wide (typical smartphone) */
+@media (max-width: 480px) {
+  body {
+      font-size: 12px;
+  }
+  #everything {
+    margin-top: -50vw;
+    align-items: center;
+  }
+  #guess_board {
+    width:80vw;
+    overflow:scroll;
+  }
+
 }

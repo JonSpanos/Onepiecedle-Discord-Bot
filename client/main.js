@@ -104,7 +104,7 @@ let CHARACTER_TO_GUESS = CHARACTERS[getRandomDaily(0, CHARACTERS.length)]
 let GUESSED_CHARACTERS = []
 
 document.querySelector('#app').innerHTML = `
-  <div>
+  <div id="everything">
     <img src="${strawhatJollyRoger}" class="logo" alt="" />
     <h2>Guess today's One Piece character!</h2>
     <h3 id="guess_total">Number of guesses: 0</h3>

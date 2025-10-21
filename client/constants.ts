@@ -95,6 +95,12 @@ export const CHARACTERS = [
     addCharacter(["Crocodile", "Mr. 0"], "Male", "Cross Guild", "Logia", [], 1965000000, 253, "Grand Line", ARCS.LITTLEGARDEN),
     addCharacter(["Dracule Mihawk", "Mihawk"], "Male", "Cross Guild", "None", [armament, observation], 3590000000, 198, "Grand Line", ARCS.BARATIE),
     
+    // Whitebeard Pirates
+    addCharacter(["Marco"], "Male", "Whitebeard Pirates", "Zoan", [armament, observation], 1374000000, 203, "Grand Line", ARCS.JAYA),
+    addCharacter(["Portgas D. Ace", "Ace"], "Male", "Whitebeard Pirates", "Logia", [armament, observation, conquerors], 550000000, 185, "South Blue", ARCS.DRUMISLAND),
+    addCharacter(["Izo"], "Male", "Whitebeard Pirates", "None", [armament, observation], 510000000, 192, "Grand Line", ARCS.MARINEFORD),
+    addCharacter(["Jozu"], "Male", "Whitebeard Pirates", "Paramecia", [armament, observation], 0, 503, "West Blue", ARCS.JAYA),
+
     // Blackbeard Pirates
     addCharacter(["Jesus Burgess", "Burgess"], "Male", "Blackbeard Pirates", "Paramecia", [armament, observation], 20000000, 355, "Grand Line", ARCS.JAYA),
     addCharacter(["Shiryu"], "Male", "Blackbeard Pirates", "Paramecia", [armament, observation], 0, 340, "Grand Line", ARCS.IMPELDOWN),
