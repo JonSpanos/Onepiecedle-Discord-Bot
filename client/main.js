@@ -361,15 +361,6 @@ async function insertCharInfoInRow(char) {
   }
 }
 
-async function getPlayer() {
-  document.getElementById("testing").textContent = "hi"
-  let output = await discordSdk.commands.getInstanceConnectedParticipants()
-  document.getElementById("testing").textContent = "bye"  
-  
-  return output.participants[0].username
-}
-
-
 function compareArrays(a, b) {
   if (a === b) return true;
   if (a == null || b == null) return false;
