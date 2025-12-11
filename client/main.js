@@ -260,7 +260,7 @@ function isCorrect(char, info) {
     return 1
   } else if (info === "height") { // Compare feet/inch conversion rather than cm
     let {feet, inches} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
-    let {feet:feet_to_guess, inches:inches_to_guess} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
+    let {feet_to_guess, inches_to_guess} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
 
     if (feet == feet_to_guess && inches == inches_to_guess) return 1
 

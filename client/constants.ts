@@ -165,7 +165,6 @@ export const CHARACTERS = [
     addCharacter(["Makino"], "Female", "Partys Bar", "None", [], 0, 166, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Gaimon"], "Male", "None", "None", [], 0, 130, "East Blue", ARCS.SYRUPVILLAGE),
     addCharacter(["Nojiko"], "Female", "None", "None", [], 0, 170, "East Blue", ARCS.ARLONGPARK),
-    addCharacter(["Portgas D. Ace", "Ace"], "Male", "Whitebeard Pirates", "Logia", [armament, observation, conquerors], 550000000, 185, "South Blue", ARCS.DRUMISLAND),
     addCharacter(["Kurozumi Orochi", "Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Jaguar D. Saul", "Saul"], "Male", "Walrus School", "None", [], 0, 1950, "South Blue", ARCS.ENIESLOBBY),
     addCharacter(["Vinsmoke Yonji", "Yonji"], "Male", "Vinsmoke Family", "None", [], 0, 194, "North Blue", ARCS.WCI),
