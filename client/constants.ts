@@ -94,6 +94,8 @@ export const CHARACTERS = [
     addCharacter(["Buggy The Clown", "Buggy"], "Male", "Cross Guild", "Paramecia", [], 3189000000, 192, "Grand Line", ARCS.ORANGETOWN),
     addCharacter(["Crocodile", "Mr. 0"], "Male", "Cross Guild", "Logia", [], 1965000000, 253, "Grand Line", ARCS.LITTLEGARDEN),
     addCharacter(["Dracule Mihawk", "Mihawk"], "Male", "Cross Guild", "None", [armament, observation], 3590000000, 198, "Grand Line", ARCS.BARATIE),
+    addCharacter(["Mohji"], "Male", "Cross Guild", "None", [], 0, 197, "East Blue", ARCS.ORANGETOWN),
+    addCharacter(["Cabaji"], "Male", "Cross Guild", "None", [], 0, 208, "East Blue", ARCS.ORANGETOWN),
     
     // Whitebeard Pirates
     addCharacter(["Marco"], "Male", "Whitebeard Pirates", "Zoan", [armament, observation], 1374000000, 203, "Grand Line", ARCS.JAYA),
@@ -198,7 +200,6 @@ export const CHARACTERS = [
     addCharacter(["Koby", "Coby"], "Male", "Marines", "None", [armament, observation], 500000000, 167, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Hiriluk"], "Male", "None", "None", [], 0, 213, "Grand Line", ARCS.DRUMISLAND),
     addCharacter(["Dalton"], "Male", "Sakura Kingdom", "Zoan", [], 0, 218, "Grand Line", ARCS.DRUMISLAND),
-    addCharacter(["Wapol"], "Male", "Evil Black Drum Kingdom", "Paramecia", [], 0, 207, "Grand Line", ARCS.DRUMISLAND),
     addCharacter(["Kureha"], "Female", "Sakura Kingdom", "None", [], 0, 188, "Grand Line", ARCS.DRUMISLAND),
     addCharacter(["Tama", "Kurozumi Tama"], "Female", "Kurozumi Family", "Paramecia", [], 0, 108, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Jewelry Bonney", "Bonney"], "Female", "Bonney Pirates", "Paramecia", [armament], 320000000, 174, "Red Line", ARCS.SABAODY),
@@ -215,6 +216,7 @@ export const CHARACTERS = [
     addCharacter(["Kalifa"], "Female", "CP0", "Paramecia", [], 0, 185, "Grand Line", ARCS.WATER7),
     addCharacter(["Kaku"], "Male", "CP0", "Zoan", [armament, observation], 0, 193, "East Blue", ARCS.WATER7),
     addCharacter(["Blueno"], "Male", "CP0", "Paramecia", [], 0, 258, "North Blue", ARCS.WATER7),
+    addCharacter(["Laboon"], "Male", "Crocus", "None", [], 0, 40000, "West Blue", ARCS.REVERSEMOUNTAIN),
     
     
 ]
