@@ -258,6 +258,12 @@ function abbrNum(number, decPlaces) {
 function isCorrect(char, info) {
   if (char[info] === CHARACTER_TO_GUESS[info]) {
     return 1
+  } else if (info === "height") { // Compare feet/inch conversion rather than cm
+    let {feet, inches} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
+    let {feet:feet_to_guess, inches:inches_to_guess} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
+
+    if (feet == feet_to_guess && inches == inches_to_guess) return 1
+
   } else if (info === "haki") {
     if (char[info].length === 0 && CHARACTER_TO_GUESS[info].length === 0) { // No haki
       return 1
@@ -271,6 +277,7 @@ function isCorrect(char, info) {
       }
     }
   }
+  
   return 0
 }
 
@@ -278,6 +285,7 @@ function isCorrect(char, info) {
 let row_emoji = "" // Row of emojis
 async function insertCharInfoInRow(char) {
   let curr_emoji = ""
+  createRow() // Create new row for guess
   let rows = document.getElementsByClassName("row")
 
   let row = rows[GUESSED_CHARACTERS.length] // First row says what each col is for
@@ -372,8 +380,15 @@ function compareArrays(a, b) {
   return true;
 }
 
+function createRow() {
+    let board = document.getElementById("guess_board");
+    let row = document.createElement("div")
+    row.className = "row"
+    
+    board.appendChild(row)
+}
+
 function initBoard() {
-  let board = document.getElementById("guess_board");
   let infoConversions = {
     df: "Devil Fruit",
     name: "Name",
@@ -385,12 +400,8 @@ function initBoard() {
     origin: "Origin",
     firstarc: "First Arc"
   }
-  for (let i = 0; i < 8; i++) {
-    let row = document.createElement("div")
-    row.className = "row"
-    
-    board.appendChild(row)
-  }
+  
+  createRow() // header row
 
   let rows = document.getElementsByClassName("row")
   let row = rows[0] // First row says what each col is for
