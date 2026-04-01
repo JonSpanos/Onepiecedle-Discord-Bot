@@ -290,6 +290,20 @@ async function insertCharInfoInRow(char) {
 
   let row = rows[GUESSED_CHARACTERS.length] // First row says what each col is for
   let i = 0
+
+  // Add dory box
+  // Finally add the most important, the Met Dory category.
+  let dory_box = document.createElement("div")
+  dory_box.textContent = "Nope"
+  dory_box.className = "box wrong"
+  if (char["name"] == "Nemo")  { // Correct guess
+    dory_box.textContent = "Yea"
+    if (char["name"] === CHARACTER_TO_GUESS["name"]) {
+      dory_box.className = "box correct"
+    }
+  }
+  row.append(dory_box)
+
   for (let info of Object.keys(char)) {
     let box = document.createElement("div")
     let text = document.createElement("p")
@@ -367,19 +381,6 @@ async function insertCharInfoInRow(char) {
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     }
   }
-
-  // Finally add the most important, the Met Dory category.
-
-  let dory_box = document.createElement("div")
-  dory_box.textContent = "Nope"
-  dory_box.className = "box wrong"
-  if (char["name"] == "Nemo" && char["name"] === CHARACTER_TO_GUESS["name"])  { // Correct guess
-
-    dory_box.textContent = "Yea"
-    dory_box.className = "box correct"
-  }
-  row.append(dory_box)
-
 
 }
 function compareArrays(a, b) {
