@@ -217,7 +217,16 @@ export const CHARACTERS = [
     addCharacter(["Blueno"], "Male", "CP0", "Paramecia", [], 0, 258, "North Blue", ARCS.WATER7),
     addCharacter(["Laboon"], "Male", "Crocus", "None", [], 0, 40000, "West Blue", ARCS.REVERSEMOUNTAIN),
     
+    // Vegapunks
+    addCharacter(["Vegapunk"], "Male", "MADS", "Paramecia", [], 0, 314, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Shaka"], "Male", "Marines", "None", [], 0, 220, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Lilith"], "Female", "Marines", "None", [], 0, 204, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Edison"], "Male", "Marines", "None", [], 0, 100, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Pythagoras"], "Male", "Marines", "None", [], 0, 341, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Atlas"], "Female", "Marines", "None", [], 0, 729, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["York"], "Female", "Marines", "None", [], 0, 482, "Grand Line", ARCS.EGGHEAD),
     
+    addCharacter(["Nemo"], "Male", "Ocean", "None", [], 0, 4, "Ocean", ARCS.SKYPIEA)
 ]
 
 function addCharacter(name : String[], gender : String, affiliation : String, df : String, haki : String[], bounty : Number, height : Number, origin : String, firstarc : String) {
