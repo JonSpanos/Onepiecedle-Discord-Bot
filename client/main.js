@@ -291,19 +291,6 @@ async function insertCharInfoInRow(char) {
   let row = rows[GUESSED_CHARACTERS.length] // First row says what each col is for
   let i = 0
 
-  // Add dory box
-  // Finally add the most important, the Met Dory category.
-  let dory_box = document.createElement("div")
-  dory_box.textContent = "Nope"
-  dory_box.className = "box wrong"
-  if (char["name"] == "Nemo")  { // Correct guess
-    dory_box.textContent = "Yea"
-    if (char["name"] === CHARACTER_TO_GUESS["name"]) {
-      dory_box.className = "box correct"
-    }
-  }
-  row.append(dory_box)
-
   for (let info of Object.keys(char)) {
     let box = document.createElement("div")
     let text = document.createElement("p")
@@ -372,6 +359,22 @@ async function insertCharInfoInRow(char) {
     row_emoji += curr_emoji
   }
   row_emoji += "\n"
+
+  // Finally add the most important, the Met Dory category.
+  let dory_box = document.createElement("div")
+  dory_box.className = "box wrong"
+  if (char["name"] == "Nemo")  { // If you guessed Nemo
+    dory_box.textContent = "Yea"
+    if (CHARACTER_TO_GUESS["name"] == "Nemo") {
+      dory_box.className = "box correct"
+    }
+  } else {
+    dory_box.textContent = "Nah"
+    if (CHARACTER_TO_GUESS["name"] != "Nemo") {
+      dory_box.className = "box correct"
+    }
+  }
+  row.append(dory_box)
 
   // If correct guess
   if (char["name"] === CHARACTER_TO_GUESS["name"]) {
