@@ -398,7 +398,8 @@ function initBoard() {
     bounty: "Bounty",
     height: "Height",
     origin: "Origin",
-    firstarc: "First Arc"
+    firstarc: "First Arc",
+    dory_witness: "Has met Dory from Finding Nemo"
   }
   
   createRow() // header row
