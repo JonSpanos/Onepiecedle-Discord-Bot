@@ -415,8 +415,8 @@ function initBoard() {
   }
 
   let dory_box = document.createElement("div")
-  box.textContent = "Has met Dory from Finding Nemo"
-  box.className = "header"
-  row.append(box)
+  dory_box.textContent = "Has met Dory from Finding Nemo"
+  dory_box.className = "header"
+  row.append(dory_box)
 
 }
