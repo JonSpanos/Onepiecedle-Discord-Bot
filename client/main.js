@@ -367,8 +367,21 @@ async function insertCharInfoInRow(char) {
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     }
   }
-}
 
+  // Finally add the most important, the Met Dory category.
+
+  let dory_box = document.createElement("div")
+  dory_box.textContent = "Nope"
+  dory_box.className = "box wrong"
+  if (char["name"] == "Nemo" && char["name"] === CHARACTER_TO_GUESS["name"])  { // Correct guess
+
+    dory_box.textContent = "Yea"
+    dory_box.className = "box correct"
+  }
+  row.append(dory_box)
+
+
+}
 function compareArrays(a, b) {
   if (a === b) return true;
   if (a == null || b == null) return false;
@@ -415,7 +428,7 @@ function initBoard() {
   }
 
   let dory_box = document.createElement("div")
-  dory_box.textContent = "Has met Dory from Finding Nemo"
+  dory_box.textContent = "Met Dory"
   dory_box.className = "header"
   row.append(dory_box)
 
