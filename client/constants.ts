@@ -233,6 +233,7 @@ export const CHARACTERS = [
     addCharacter(["Vander Decken IX"], "Male", "Flying Pirates", "Paramecia", [], 0, 352, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Rock", "Yeti Cool Brother 1"],"Male","Caesar Clown","None",[],20000000,4250,"Grand Line",ARCS.PUNKHAZARD),
     addCharacter(["Scotch", "Yeti Cool Brother 2"],"Male","Caesar Clown","None",[],20000000,4250,"Grand Line",ARCS.PUNKHAZARD),
+    addCharacter(["Monet"],"Female","Caesar Clown","Logia", [],0,227,"North Blue",ARCS.PUNKHAZARD),
     addCharacter(["Paulie"],"Male","Galley-La Company","None",[],0,195,"Grand Line",ARCS.WATER7),
     addCharacter(["Iceburg"],"Male","Galley-La Company","None",[],0,199,"Grand Line",ARCS.WATER7),
     addCharacter(["Kalgara"],"Male","Shandia","None",[observation],0,222,"Grand Line",ARCS.SKYPIEA),
