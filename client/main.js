@@ -360,23 +360,21 @@ async function insertCharInfoInRow(char) {
   }
   
   let dory_box = document.createElement("div")
-  let text = document.createElement("p")
   dory_box.className = "box wrong"
-      curr_emoji = ":red_square:"
+  curr_emoji = ":red_square:"
   if (char["name"] == "Nemo")  { // If you guessed Nemo
-    text.textContent = "Yea"
+    dory_box.textContent = "Yea"
     if (CHARACTER_TO_GUESS["name"] == "Nemo") {
       dory_box.className = "box correct"
       curr_emoji = ":green_square:"
     }
   } else {
-    text.textContent = "Nah"
+    dory_box.textContent = "Nah"
     if (CHARACTER_TO_GUESS["name"] != "Nemo") {
       dory_box.className = "box correct"
       curr_emoji = ":green_square:"
     }
   }
-  box.append(text)
   setTimeout(() => { // Delayed appending for animation
       row.append(dory_box)
     }, 250*i)
