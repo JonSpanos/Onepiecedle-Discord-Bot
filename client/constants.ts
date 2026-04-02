@@ -66,15 +66,23 @@ export const CHARACTERS = [
     addCharacter(["Hody Jones"], "Male", "New Fish-Man Pirates", "None", [], 0, 331, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Caesar Clown", "Master"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
     addCharacter(["Donquixote Doflamingo", "Doflamingo"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation, conquerors], 340000000, 305, "Red Line", ARCS.JAYA),
-    addCharacter(["Jack"], "Male", "Beasts Pirates", "Zoan", [armament, observation], 1000000000, 830, "Grand Line", ARCS.ZOU),
+    addCharacter(["Jack"], "Male", "Beast Pirates", "Zoan", [armament, observation], 1000000000, 830, "Grand Line", ARCS.ZOU),
     addCharacter(["Kurozumi Orochi", "Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
+
+    // Beast Pirates
+    addCharacter(["Ulti"],"Female","Yamato","Zoan",[armament, observation],400000000,173,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["Page One"],"Male","Yamato","Zoan",[armament, observation],290000000,171,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["Queen"],"Male","Beast Pirates","Zoan",[armament, observation],1320000000,612,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["King"],"Male","Beast Pirates","Zoan",[armament, observation],1390000000,613,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["Black Maria"],"Female","Beast Pirates","Zoan",[armament, observation],480000000,820,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["Sasaki"],"Male","Beast Pirates","Zoan",[armament,observation],472000000,318,"Grand Line",ARCS.WANOCOUNTRY),
+    addCharacter(["Who's-Who"],"Male","Beast Pirates","Zoan",[armament,observation],546000000,336,"North Blue",ARCS.WANOCOUNTRY),
 
     // Baroque Works
     addCharacter(["Daz Bonez", "Mr. 1"], "Male", "Cross Guild", "Paramecia", [], 75000000, 212, "West Blue", ARCS.ALABASTA),
     addCharacter(["Bentham", "Bon Clay", "Mr. 2 Bon Kurei"], "Male", "Newkama Land", "Paramecia", [], 32000000, 238, "East Blue", ARCS.LITTLEGARDEN),
     addCharacter(["Galdino", "Mr. 3"], "Male", "Cross Guild", "Paramecia", [], 24000000, 179, "South Blue", ARCS.LITTLEGARDEN),
     addCharacter(["Babe", "Mr. 4"], "Male", "New Spiders Cafe", "None", [], 3200000, 218, "Grand Line", ARCS.ALABASTA),
-
 
     // Admirals
     addCharacter(["Akainu", "Sakazuki"], "Male", "Marines", "Logia", [armament, observation], 5000000000, 306, "North Blue", ARCS.ENIESLOBBY),
@@ -85,7 +93,7 @@ export const CHARACTERS = [
 
     // Emperors
     addCharacter(["Charlotte Linlin", "Big Mom", "Linlin"], "Female", "Big Mom Pirates", "Paramecia", [armament, observation, conquerors], 4388000000, 880, "Grand Line", ARCS.FISHMANISLAND),
-    addCharacter(["Kaido"], "Male", "Beasts Pirates", "Zoan", [armament, observation, conquerors], 4611100000, 710, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Kaido"], "Male", "Beast Pirates", "Zoan", [armament, observation, conquerors], 4611100000, 710, "Grand Line", ARCS.DRESSROSA),
     addCharacter(["Edward Newgate", "Whitebeard"], "Male", "Whitebeard Pirates", "Paramecia", [armament, observation, conquerors], 5046000000, 666, "Grand Line", ARCS.JAYA),
     addCharacter(["Shanks", "Red-Haired Shanks"], "Male", "Red Hair Pirates", "None", [armament, observation, conquerors], 4048900000, 199, "West Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Blackbeard", "Marshall D. Teach", "Teach"], "Male", "Blackbeard Pirates", "Logia", [armament, observation, conquerors], 3996000000, 344, "Grand Line", ARCS.JAYA),
@@ -127,8 +135,9 @@ export const CHARACTERS = [
     addCharacter(["Emporio Ivankov", "Ivankov"], "Male", "Revolutionary Army", "Paramecia", [], 100000000, 449, "Grand Line", ARCS.IMPELDOWN),
     addCharacter(["Belo Betty", "Betty"], "Female", "Revolutionary Army", "Paramecia", [armament, observation], 457000000, 196, "East Blue", ARCS.REVERIE),
     addCharacter(["Sabo"], "Male", "Revolutionary Army", "Logia", [armament, observation], 602000000, 187, "East Blue", ARCS.POSTWAR),
+    addCharacter(["Koala"],"Female","Revolutionary Army","None",[],6,160,"Unknown",ARCS.FISHMANISLAND),
+    addCharacter(["Hack"],"Male","Revolutionary Army","None",[],0,280,"Grand Line",ARCS.DRESSROSA),
     
-
     // Charlotte Family
     addCharacter(["Charlotte Pudding", "Pudding"], "Female", "Charlotte Family", "Paramecia", [], 0, 166, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Charlotte Katakuri", "Katakuri"], "Male", "Charlotte Family", "Paramecia", [armament, observation, conquerors], 1057000000, 509, "Grand Line", ARCS.WCI),
@@ -148,7 +157,7 @@ export const CHARACTERS = [
     addCharacter(["Wanda"], "Female", "Mokomo Dukedom", "None", [], 0, 181, "Grand Line", ARCS.ZOU),
     addCharacter(["Inuarashi", "Dogstorm"], "Male", "Mokomo Dukedom", "None", [armament, observation], 0, 511, "Grand Line", ARCS.ZOU),
 
-
+    addCharacter(["Hina"],"Female","Marines","Paramecia",[],200000000,181,"West Blue",ARCS.ALABASTA),
     addCharacter(["Sentomaru"], "Male", "Marines", "None", [armament, observation], 500000000, 279, "Grand Line", ARCS.SABAODY),
     addCharacter(["Tsuru"], "Female", "Marines", "Paramecia", [armament, observation], 500000000, 204, "North Blue", ARCS.JAYA),
     addCharacter(["Monkey D. Garp", "Garp"], "Male", "Marines", "None", [armament, observation, conquerors], 3000000000, 287, "East Blue", ARCS.ARLONGPARK),
@@ -215,8 +224,32 @@ export const CHARACTERS = [
     addCharacter(["Kalifa"], "Female", "CP0", "Paramecia", [], 0, 185, "Grand Line", ARCS.WATER7),
     addCharacter(["Kaku"], "Male", "CP0", "Zoan", [armament, observation], 0, 193, "East Blue", ARCS.WATER7),
     addCharacter(["Blueno"], "Male", "CP0", "Paramecia", [], 0, 258, "North Blue", ARCS.WATER7),
+    addCharacter(["Kumadori"],"Male","CP0","None",[armament, observation],0,338,"South Blue",ARCS.ENIESLOBBY),
+    addCharacter(["Fukurou"],"Male","CP0","None",[armament, observation],0,331,"Grand Line",ARCS.ENIESLOBBY),
     addCharacter(["Laboon"], "Male", "Crocus", "None", [], 0, 40000, "West Blue", ARCS.REVERSEMOUNTAIN),
     
+    addCharacter(["Ginny"],"Female","Revolutionary Army", "None", [], 190000000, 174, "Grand Line", ARCS.EGGHEAD),
+    addCharacter(["Bell-mère", "Bellmere"], "Female", "Marines", "None", [], 0, 186, "East Blue", ARCS.ARLONGPARK),
+    addCharacter(["Vander Decken IX"], "Male", "Flying Pirates", "Paramecia", [], 0, 352, "Grand Line", ARCS.FISHMANISLAND),
+    addCharacter(["Rock", "Yeti Cool Brother 1"],"Male","Caesar Clown","None",[],20000000,4250,"Grand Line",ARCS.PUNKHAZARD),
+    addCharacter(["Scotch", "Yeti Cool Brother 2"],"Male","Caesar Clown","None",[],20000000,4250,"Grand Line",ARCS.PUNKHAZARD),
+    addCharacter(["Paulie"],"Male","Galley-La Company","None",[],0,195,"Grand Line",ARCS.WATER7),
+    addCharacter(["Iceburg"],"Male","Galley-La Company","None",[],0,199,"Grand Line",ARCS.WATER7),
+    addCharacter(["Kalgara"],"Male","Shandia","None",[observation],0,222,"Grand Line",ARCS.SKYPIEA),
+    addCharacter(["Chimney"],"Female","Kokoro","None",[],0,115,"Grand Line",ARCS.WATER7),
+    addCharacter(["Chew"],"Male","Arlong Pirates","None",[],5500000,257,"Grand Line",ARCS.ARLONGPARK),
+    addCharacter(["Kuroobi"],"Male","Arlong Pirates","None",[],9000000,252,"Grand Line",ARCS.ARLONGPARK),
+    addCharacter(["Aisa"],"Female","Shandia","None",[observation],0,140,"Sky Islands",ARCS.SKYPIEA),
+    addCharacter(["Hogback"],"Male","Thriller Bark Pirates","None",[],0,223,"West Blue",ARCS.THRILLERBARK),
+    addCharacter(["Absalom"],"Male","Thriller Bark Pirates","Paramecia",[],0,195,"West Blue",ARCS.THRILLERBARK),
+    addCharacter(["Perona"],"Female","Thriller Bark Pirates","Paramecia",[],0,160,"West Blue",ARCS.THRILLERBARK),
+    addCharacter(["Victoria Cindry", "Cindry"],"Female","Thriller Bark Pirates","None",[],0,188,"West Blue",ARCS.THRILLERBARK),
+    addCharacter(["Chouchou"],"Male","Hocker","None",[],0,40,"East Blue",ARCS.ORANGETOWN),
+    addCharacter(["Gedatsu"],"Male","Ukkari Hot-Spring Island","None",[observation],0,220,"Sky Islands",ARCS.SKYPIEA),
+    addCharacter(["Satori"],"Male","God's Army","None",[observation],0,179,"Sky Islands",ARCS.SKYPIEA),
+    addCharacter(["Ohm"],"Male","God's Army","None",[observation],0,189,"Sky Islands",ARCS.SKYPIEA),
+    addCharacter(["Shura"],"Male","God's Army","None",[observation],0,191,"Sky Islands",ARCS.SKYPIEA),
+
     // Vegapunks
     addCharacter(["Vegapunk"], "Male", "MADS", "Paramecia", [], 0, 314, "Grand Line", ARCS.EGGHEAD),
     addCharacter(["Shaka"], "Male", "Marines", "None", [], 0, 220, "Grand Line", ARCS.EGGHEAD),
@@ -226,7 +259,13 @@ export const CHARACTERS = [
     addCharacter(["Atlas"], "Female", "Marines", "None", [], 0, 729, "Grand Line", ARCS.EGGHEAD),
     addCharacter(["York"], "Female", "Marines", "None", [], 0, 482, "Grand Line", ARCS.EGGHEAD),
     
-    addCharacter(["Nemo"], "Male", "Ocean", "None", [], 0, 4, "Ocean", ARCS.SKYPIEA)
+    // Seraphim
+    addCharacter(["S-Snake"],"Female","Seraphim","Paramecia",[armament, observation],0,208,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Bear"],"Male","Seraphim","Paramecia",[armament, observation],0,660,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Hawk"],"Male","Seraphim","Paramecia",[armament, observation],0,212,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Shark"],"Male","Seraphim","Paramecia",[armament, observation],0,320,"Grand Line",ARCS.EGGHEAD),
+    
+    addCharacter(["Nemo"], "Male", "Ocean", "None", [conquerors], 0, 4, "Ocean", ARCS.SKYPIEA)
 ]
 
 function addCharacter(name : String[], gender : String, affiliation : String, df : String, haki : String[], bounty : Number, height : Number, origin : String, firstarc : String) {
