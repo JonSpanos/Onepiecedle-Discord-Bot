@@ -358,23 +358,31 @@ async function insertCharInfoInRow(char) {
     i++
     row_emoji += curr_emoji
   }
-  row_emoji += "\n"
-
-  // Finally add the most important, the Met Dory category.
+  
   let dory_box = document.createElement("div")
+  let text = document.createElement("p")
   dory_box.className = "box wrong"
+      curr_emoji = ":red_square:"
   if (char["name"] == "Nemo")  { // If you guessed Nemo
-    dory_box.textContent = "Yea"
+    text.textContent = "Yea"
     if (CHARACTER_TO_GUESS["name"] == "Nemo") {
       dory_box.className = "box correct"
+      curr_emoji = ":green_square:"
     }
   } else {
-    dory_box.textContent = "Nah"
+    text.textContent = "Nah"
     if (CHARACTER_TO_GUESS["name"] != "Nemo") {
       dory_box.className = "box correct"
+      curr_emoji = ":green_square:"
     }
   }
-  row.append(dory_box)
+  box.append(text)
+  setTimeout(() => { // Delayed appending for animation
+      row.append(dory_box)
+    }, 250*i)
+
+  row_emoji += curr_emoji
+  row_emoji += "\n"
 
   // If correct guess
   if (char["name"] === CHARACTER_TO_GUESS["name"]) {
