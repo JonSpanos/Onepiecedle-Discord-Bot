@@ -58,6 +58,13 @@ async function setupDiscordSdk() {
   }
 }
   
+async function addToLeaderboard(user_id) {
+  const response = await env.DB.prepare(
+    "INSERT INTO Leaderboard (user_id, guesses) VALUES (?, ?)"
+  )
+  .bind(user_id, GUESSED_CHARACTERS.length)
+  .run();
+}
 
 async function sendMessage(_message) {
   try {
@@ -387,7 +394,12 @@ async function insertCharInfoInRow(char) {
     if (auth == null) {
       await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     } else {
+      // Add name to leaderboard
+      await addToLeaderboard(auth.user.id)
+
+      // Send message in chat about victory!
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
+      
     }
   }
 

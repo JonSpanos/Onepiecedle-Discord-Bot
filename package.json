@@ -1,5 +1,14 @@
 {
   "dependencies": {
     "@discord/embedded-app-sdk": "^2.4.0"
+  },
+  "scripts": {
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "tunnel": "cloudflared tunnel --url http://localhost:5173",
+    "start": "concurrently \"npm:dev:client\" \"npm:dev:server\" \"npm:tunnel\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
   }
 }

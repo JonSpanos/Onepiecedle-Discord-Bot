@@ -16,7 +16,8 @@ export default defineConfig({
       clientPort: 443,
     },
     allowedHosts: [
-      "dev.bridgefandom.com"
+      "dev.bridgefandom.com",
+      "mrs-necessarily-valve-ingredients.trycloudflare.com"
     ]
   },
 });
