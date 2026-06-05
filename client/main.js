@@ -58,7 +58,7 @@ async function setupDiscordSdk() {
   }
 }
 
-async function sendToLeaderboard(_user_id) {
+async function addToLeaderboard(_user_id) {
   try {
     const response = await fetch("/api/add-to-leaderboard", {
       method: "POST",
