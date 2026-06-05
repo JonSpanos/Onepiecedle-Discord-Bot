@@ -58,12 +58,26 @@ async function setupDiscordSdk() {
   }
 }
   
-async function addToLeaderboard(user_id) {
-  const response = await env.DB.prepare(
-    "INSERT INTO Leaderboard (user_id, guesses) VALUES (?, ?)"
-  )
-  .bind(user_id, GUESSED_CHARACTERS.length)
-  .run();
+async function addToLeaderboard(_user_id) {
+  try {
+    const response = await fetch("/api/add-to-leaderboard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: _user_id,
+        guesses: GUESSED_CHARACTERS.length
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error("Failed to respond")
+    }
+       
+  } catch (error) {
+    throw error
+  }
 }
 
 async function sendMessage(_message) {
@@ -392,6 +406,7 @@ async function insertCharInfoInRow(char) {
   // If correct guess
   if (char["name"] === CHARACTER_TO_GUESS["name"]) {
     if (auth == null) {
+      await addToLeaderboard(404)
       await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     } else {
       // Add name to leaderboard

@@ -17,7 +17,7 @@ export default defineConfig({
     },
     allowedHosts: [
       "dev.bridgefandom.com",
-      "mrs-necessarily-valve-ingredients.trycloudflare.com"
+      "mental-nine-news-voted.trycloudflare.com"
     ]
   },
 });
