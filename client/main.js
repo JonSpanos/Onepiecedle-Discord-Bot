@@ -57,7 +57,28 @@ async function setupDiscordSdk() {
     throw new Error("Authenticate command failed");
   }
 }
-  
+
+async function sendToLeaderboard(_user_id) {
+  try {
+    const response = await fetch("/api/add-to-leaderboard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: _user_id,
+        guesses: GUESSED_CHARACTERS.length
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error("Failed to respond")
+    }
+        
+  } catch (error) {
+    throw error
+  }
+}
 
 async function sendMessage(_message) {
   try {
@@ -387,6 +408,7 @@ async function insertCharInfoInRow(char) {
     if (auth == null) {
       await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     } else {
+      await addToLeaderboard(auth.user.user_id)
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     }
   }
