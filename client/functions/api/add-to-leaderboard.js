@@ -14,9 +14,7 @@ export async function onRequest(context) {
     console.log("Before prepare")
     // Inset data to leaderboard
     const bound_db_call = context.env.DB.prepare(`
-      INSERT INTO Leaderboard (user_id, guesses, time_completed)
-      VALUES (?, ?, CURRENT_TIMESTAMP)
-      `)
+      INSERT INTO Leaderboard (103913, 1, CURRENT_TIMESTAMP)`);
 
     console.log("bound_db_call: ", bound_db_call)
 
