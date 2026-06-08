@@ -2,6 +2,8 @@ export async function onRequest(context) {
   if (context.request.method !== "POST") {
     return new Response("Method Not Allowed", { status: 405 });
   }
+  console.log("env keys:", Object.keys(context.env));
+  console.log("DB value:", context.env.DB);
 
   try {
     const {user_id, guesses} = await context.request.json();
