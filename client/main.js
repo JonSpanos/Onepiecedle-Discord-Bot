@@ -407,6 +407,7 @@ async function insertCharInfoInRow(char) {
   if (char["name"] === CHARACTER_TO_GUESS["name"]) {
     if (auth == null) {
       await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
+      await addToLeaderboard(4040404) // For testing, remove later.
     } else {
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
       await addToLeaderboard(auth.user.id)
