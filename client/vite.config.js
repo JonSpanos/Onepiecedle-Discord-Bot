@@ -16,7 +16,8 @@ export default defineConfig({
       clientPort: 443,
     },
     allowedHosts: [
-      "dev.bridgefandom.com"
+      "dev.bridgefandom.com",
+      "mental-nine-news-voted.trycloudflare.com"
     ]
   },
 });
