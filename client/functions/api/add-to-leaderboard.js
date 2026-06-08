@@ -7,24 +7,16 @@ export async function onRequest(context) {
     const {user_id, guesses} = await context.request.json();
 
     // Validate input
-    if (!user_id || guesses == undefined) {
+    if (!user_id || guesses == null) {
       return new Response("Missing required data", {status: 400})
     }
 
-    console.log("Before prepare")
     // Inset data to leaderboard
-    const bound_db_call = context.env.DB.prepare(`
+    const stmt = context.env.DB.prepare(`
       INSERT INTO Leaderboard (user_id, guesses, time_completed)
-      VALUES (101, 3, CURRENT_TIMESTAMP)
-      `)
+      VALUES (?, ?, CURRENT_TIMESTAMP)`);
 
-    console.log("bound_db_call: ", bound_db_call)
-
-    try {
-      const res = await bound_db_call.run()
-    } catch (error) {
-      console.error(error)
-    }a
+    await stmt.bind(user_id, guesses).run();
     
     return new Response(JSON.stringify({success: true, message: "Score updated!"}), {
       status: 200,

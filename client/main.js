@@ -57,7 +57,7 @@ async function setupDiscordSdk() {
     throw new Error("Authenticate command failed");
   }
 }
-  
+
 async function addToLeaderboard(_user_id) {
   try {
     const response = await fetch("/api/add-to-leaderboard", {
@@ -69,12 +69,12 @@ async function addToLeaderboard(_user_id) {
         user_id: _user_id,
         guesses: GUESSED_CHARACTERS.length
       })
-    });
-    
+    })
+
     if (!response.ok) {
       throw new Error("Failed to respond")
     }
-       
+        
   } catch (error) {
     throw error
   }
@@ -406,7 +406,6 @@ async function insertCharInfoInRow(char) {
   // If correct guess
   if (char["name"] === CHARACTER_TO_GUESS["name"]) {
     if (auth == null) {
-      await addToLeaderboard(404)
       await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     } else {
       // Add name to leaderboard
@@ -414,7 +413,6 @@ async function insertCharInfoInRow(char) {
 
       // Send message in chat about victory!
       await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
-      
     }
   }
 
