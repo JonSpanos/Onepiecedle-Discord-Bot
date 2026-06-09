@@ -131,25 +131,7 @@ updateDropdownList(LIST_OF_CHARACTER_NAMES)
 
 initBoard()
 
-// Now for each character this user has guessed before, let's simulate a guess.
-let guess_data
-if (auth == null) {
-  guess_data = await getGuesses("351911656063893505")
-} else {
-  guess_data = await getGuesses(auth.user.id)
-}
-
-let j = 0
-let cancelGuessesAndWins = true
-for (const guessed_char of guess_data.guessed_characters) {
-  setTimeout(() => { // Delayed appending for animation
-      attemptCharacter(guessed_char.character_name)
-    }, 250*j)
-    j++
-}
-setTimeout(() => {
-  cancelGuessesAndWins = false
-}, 250*j)
+loadBoardState()
 
 // Configure input
 let input = document.getElementById("guess_input")
@@ -364,6 +346,30 @@ function createRow() {
     row.className = "row"
     
     board.appendChild(row)
+}
+
+async function loadBoardState() {
+
+  // Now for each character this user has guessed before, let's simulate a guess.
+  let guess_data
+  if (auth == null) {
+    guess_data = await getGuesses("351911656063893505")
+  } else {
+    guess_data = await getGuesses(auth.user.id)
+  }
+
+  let j = 0
+  let cancelGuessesAndWins = true
+  for (const guessed_char of guess_data.guessed_characters) {
+    setTimeout(() => { // Delayed appending for animation
+        attemptCharacter(guessed_char.character_name)
+      }, 250*j)
+      j++
+  }
+  setTimeout(() => {
+    cancelGuessesAndWins = false
+  }, 250*j)
+
 }
 
 function initBoard() {
