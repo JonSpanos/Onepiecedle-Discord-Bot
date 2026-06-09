@@ -109,7 +109,7 @@ export async function onRequest(context) {
     
     // Get day
     const day = new Date().toISOString().slice(0,10); // ex: 2026-06-08
-    context.env.DB.prepare(`
+    await context.env.DB.prepare(`
       INSERT OR IGNORE INTO DailyGuesses (user_id, day, character_name)
       VALUES (?, ?, ?)`)
       .bind(user_id, day, guessed_character_name).run();
