@@ -19,7 +19,6 @@ export async function onRequest(context) {
         user_id TEXT,
         day TEXT,
         character_name TEXT,
-        guessed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
         PRIMARY KEY (user_id, day, character_name)
     );`).run();
@@ -27,8 +26,8 @@ export async function onRequest(context) {
 
     // Prepare statement
     const result = await context.env.DB.prepare(`
-      SELECT user_id, character_name, guessed_at FROM DailyGuesses WHERE day = ?`)
-      .bind(day)
+      SELECT character_name FROM DailyGuesses WHERE day = ? AND user_id = ?`)
+      .bind(day, user_id)
       .all();
     
     return new Response(JSON.stringify({

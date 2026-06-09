@@ -102,7 +102,6 @@ export async function onRequest(context) {
         user_id TEXT,
         day TEXT,
         character_name TEXT,
-        guessed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
         PRIMARY KEY (user_id, day, character_name)
     );`).run();

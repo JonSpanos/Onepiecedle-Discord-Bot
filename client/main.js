@@ -348,7 +348,6 @@ function createRow() {
 }
 
 async function loadBoardState() {
-
   // Now for each character this user has guessed before, let's simulate a guess.
   let guess_data
   if (auth != null) {
