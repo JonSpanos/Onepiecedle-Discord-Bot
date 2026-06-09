@@ -1,0 +1,47 @@
+export async function onRequest(context) {
+  if (context.request.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
+
+  try {
+    const {user_id} = await context.request.json();
+    const day = new Date().toISOString().slice(0, 10);
+
+    // Validate input
+    if (!user_id) {
+      return new Response("Missing required data", {status: 400})
+    }
+    
+    // Create table if it doesn't exist (Mostly for local DB testing)
+    // Each guess for each user and ID is unique.
+    await context.env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS DailyGuesses (
+        user_id TEXT,
+        day TEXT,
+        character_name TEXT,
+        guessed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+        PRIMARY KEY (user_id, day, character_name)
+    );`).run();
+    
+
+    // Prepare statement
+    const result = await context.env.DB.prepare(`
+      SELECT user_id, character_name, guessed_at FROM DailyGuesses WHERE day = ?`)
+      .bind(day)
+      .all();
+    
+    return new Response(JSON.stringify({
+        success: true,
+        guessed_characters: result.results,
+    }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({error: error.message}), {
+      status: 400,
+      headers: {"Content-Type": "application/json"},
+    });
+  }
+}

@@ -1,6 +1,7 @@
 // Import the SDK
 import { DiscordSDK } from "@discord/embedded-app-sdk";
-import { CHARACTERS } from "./constants.ts"
+import { CHARACTERS } from "./constants.js"
+import {addToLeaderboard, getGuesses, guess, sendMessage} from "./public/api_calls.js"
 import "./style.css";
 
 // Images
@@ -9,15 +10,14 @@ import arm_haki from "/img/Armament.png"
 import obs_haki from "/img/Observation.png"
 import con_haki from "/img/Conqueror.png"
 
+// Declare gamestate var
+let gameWon = false
+
 // Declare auth code variable 
 let auth;
 
 // Instantiate the SDK
 const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
-
-setupDiscordSdk().then(() => {
-  console.log("Discord SDK is ready");
-});
 
 async function setupDiscordSdk() {
   await discordSdk.ready();
@@ -58,49 +58,16 @@ async function setupDiscordSdk() {
   }
 }
 
-async function addToLeaderboard(_user_id) {
-  try {
-    const response = await fetch("/api/add-to-leaderboard", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_id: _user_id,
-        guesses: GUESSED_CHARACTERS.length
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error("Failed to respond")
-    }
-        
-  } catch (error) {
-    throw error
-  }
+function convertCMtoFeetInches(numInCM) {
+  const totalInches = numInCM / 2.54;             // 1 inch = 2.54 cm
+  const feet = Math.floor(totalInches / 12); // 1 foot = 12 inches
+  const inches = Math.round(totalInches % 12); // remaining inches
+  return { feet, inches };
 }
 
-async function sendMessage(_message) {
-  try {
-    const response = await fetch("/api/send-msg", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ 
-        channelId: discordSdk.channelId.toString(),
-        message: _message
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error("Failed to respond")
-    }
-       
-  } catch (error) {
-    throw error
-  }
-}
+setupDiscordSdk().then(() => {
+  console.log("Discord SDK is ready");
+});
 
 let ARCS = ["Romance Dawn", "Orange Town", "Syrup Village", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain", "Whisky Peak",
   "Little Garden", "Drum Island", "Alabasta", "Jaya", "Skypiea", "Long Ring Long Land", "Water 7", "Enies Lobby", "Post-Enies Lobby",
@@ -119,8 +86,6 @@ function getRandomDaily(min, max) {
   
   return uniqueNum % CHARACTERS.length
 }
-
-let CHARACTER_TO_GUESS = CHARACTERS[getRandomDaily(0, CHARACTERS.length)]
 
 let GUESSED_CHARACTERS = []
 
@@ -166,6 +131,26 @@ updateDropdownList(LIST_OF_CHARACTER_NAMES)
 
 initBoard()
 
+// Now for each character this user has guessed before, let's simulate a guess.
+let guess_data
+if (auth == null) {
+  guess_data = await getGuesses("351911656063893505")
+} else {
+  guess_data = await getGuesses(auth.user.id)
+}
+
+let j = 0
+let cancelGuessesAndWins = true
+for (const guessed_char of guess_data.guessed_characters) {
+  setTimeout(() => { // Delayed appending for animation
+      attemptCharacter(guessed_char.character_name)
+    }, 250*j)
+    j++
+}
+setTimeout(() => {
+  cancelGuessesAndWins = false
+}, 250*j)
+
 // Configure input
 let input = document.getElementById("guess_input")
 
@@ -200,12 +185,22 @@ function notAlreadyGuessed(name) {
   }
 }
 
-function attemptCharacter(guessed_name) {
-  if (characterExists(guessed_name) && notAlreadyGuessed(guessed_name)) {
-    let character = CHARACTERS.find(character => character.name.includes(guessed_name))
-    GUESSED_CHARACTERS.push(character)
+async function attemptCharacter(guessed_name) {
+  if (!gameWon && characterExists(guessed_name) && notAlreadyGuessed(guessed_name)) {
+
+    // Serverside logic update
+    let data
+    if (auth == null) {
+      data = await guess("351911656063893505", guessed_name)
+    } else {
+      data = await guess(auth.user.id, guessed_name)
+    }
+    
+    GUESSED_CHARACTERS.push(data.guessed_character)
     document.getElementById("guess_total").textContent = "Number of guesses: " + GUESSED_CHARACTERS.length
-    insertCharInfoInRow(character)
+    
+    insertCharInfoInRow(data)
+    
     document.getElementById("guess_input").value = "" // Wipe input
     characterdatalist.style.display = "none"
   }
@@ -227,13 +222,6 @@ input.addEventListener("keyup", (e) => {
 
 function characterExists(char_str) {
   return CHARACTERS.some(character => character.name.includes(char_str))
-}
-
-function convertCMtoFeetInches(numInCM) {
-  const totalInches = numInCM / 2.54;             // 1 inch = 2.54 cm
-  const feet = Math.floor(totalInches / 12); // 1 foot = 12 inches
-  const inches = Math.round(totalInches % 12); // remaining inches
-  return { feet, inches };
 }
 
 // Stolen cause idc
@@ -273,105 +261,72 @@ function abbrNum(number, decPlaces) {
   return number;
 }
 
-// 0 = Wrong
-// 1 = True
-// 2 = Partial
-function isCorrect(char, info) {
-  if (char[info] === CHARACTER_TO_GUESS[info]) {
-    return 1
-  } else if (info === "height") { // Compare feet/inch conversion rather than cm
-    let {feet, inches} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
-    let {feet_to_guess, inches_to_guess} = convertCMtoFeetInches(CHARACTER_TO_GUESS[info])
-
-    if (feet == feet_to_guess && inches == inches_to_guess) return 1
-
-  } else if (info === "haki") {
-    if (char[info].length === 0 && CHARACTER_TO_GUESS[info].length === 0) { // No haki
-      return 1
-    } else if ( char[info].length === 0 || CHARACTER_TO_GUESS[info].length === 0 ) { // Only one has no haki
-      return 0
-    } else {
-      if(compareArrays(char[info], CHARACTER_TO_GUESS[info])) { // Identical Haki Types
-        return 1
-      } else { // Both have haki
-        return 2
-      }
-    }
-  }
-  
-  return 0
-}
-
-
 let row_emoji = "" // Row of emojis
-async function insertCharInfoInRow(char) {
+
+async function insertCharInfoInRow(characterEvaluation) {
   let curr_emoji = ""
   createRow() // Create new row for guess
   let rows = document.getElementsByClassName("row")
 
   let row = rows[GUESSED_CHARACTERS.length] // First row says what each col is for
-  let i = 0
+  let i = 0 
+
+  const char = characterEvaluation.guessed_character
 
   for (let info of Object.keys(char)) {
     let box = document.createElement("div")
     let text = document.createElement("p")
     text.className = "text"
-    text.textContent = char[info]
-    if (info === "name") { // Select first name in name list
-      text.textContent = char[info][0]
-    } else if (info === "height") {
+
+    text.textContent = characterEvaluation.guessed_character[info]
+    
+    // Custom text values
+    if (info == "name") text.textContent = characterEvaluation.guessed_character[info][0]
+    if (info == "bounty") text.textContent = abbrNum(char[info], 3)
+    if (info == "height") { // Convert text to feet and inches
       let {feet, inches} = convertCMtoFeetInches(char[info])
       text.textContent = feet + "'" + inches + '"'
-    } else if (info === "bounty") { 
-      text.textContent = abbrNum(char[info], 3) // Format number to have commas
-    } else if (info === "haki") { // If haki arr is empty, display None
-      if (char[info].length === 0) {
-        text.textContent = "None"
-      } else { // Otherwise, use images instead of typing out the names
-        text.textContent = ""
-        char[info].forEach(haki => {
-          let img = document.createElement("img")
-          if (haki === "Armament") {img.src = arm_haki}
-          else if (haki === "Observation") {img.src = obs_haki}
-          else if (haki === "Conquerors") {img.src = con_haki}
-          img.className = "icon"
-          box.append(img)
-        });
-      }
     }
-    
-    // Assign box properties and current emoji
-    if (isCorrect(char, info) == 0) { // Wrong
+    // Images instead of text
+    if (info == "haki") {
+      if (char[info].length === 0) text.textContent = "None"; else text.textContent = ""
+      char[info].forEach(haki => {
+        let img = document.createElement("img")
+        if (haki === "Armament") {img.src = arm_haki}
+        else if (haki === "Observation") {img.src = obs_haki}
+        else if (haki === "Conquerors") {img.src = con_haki}
+        img.className = "icon"
+        box.append(img)
+      })
+    }
+
+    // Assign box properties and emoji for send_messages
+    if (characterEvaluation.eval[info] == 0) {
       box.className = "box wrong"
       curr_emoji = ":red_square:"
-    } else if (isCorrect(char, info) == 1) { // Correct
+    } else if (characterEvaluation.eval[info] == 1) {
       box.className = "box correct"
       curr_emoji = ":green_square:"
-    } else { // Partial
+    } else {
       box.className = "box partial"
       curr_emoji = ":yellow_square:"
     }
+    
+    // Assign arrows
+    if ((info === "bounty" || info === "height" || info == "firstarc") && curr_emoji != ":green_square:") {
+      // Rewrite box properties and emoji
+      box.className = "box wrong"
+      curr_emoji = ":red_square:"
 
-    // Using the current emoji to identify if the info is correct, because I'm a maniac
-    if (curr_emoji != ":green_square:" && (info === "bounty" || info == "height")) {
-      // Add arrows to indicate if guessed info is greater or less than
       let arrow = document.createElement("div")
-      if (char[info] < CHARACTER_TO_GUESS[info]){
+      if (characterEvaluation.eval[info] == 2) {
         arrow.className = "uparrow"
-      } else {
-        arrow.className = "downarrow"
-      }
-      box.append(arrow)
-    } else if (curr_emoji != ":green_square:" && info === "firstarc") {
-      // Add arrows to indicate if guessed arc is before or after
-      let arrow = document.createElement("div")
-      if (ARCS.indexOf(char[info]) < ARCS.indexOf(CHARACTER_TO_GUESS[info])){
-        arrow.className = "uparrow"
-      } else {
+      } else if (characterEvaluation.eval[info] == 3) {
         arrow.className = "downarrow"
       }
       box.append(arrow)
     }
+
     box.append(text)
     setTimeout(() => { // Delayed appending for animation
       row.append(box)
@@ -379,53 +334,28 @@ async function insertCharInfoInRow(char) {
     i++
     row_emoji += curr_emoji
   }
-  
-  let dory_box = document.createElement("div")
-  dory_box.className = "box wrong"
-  curr_emoji = ":red_square:"
-  if (char["name"] == "Nemo")  { // If you guessed Nemo
-    dory_box.textContent = "Yea"
-    if (CHARACTER_TO_GUESS["name"] == "Nemo") {
-      dory_box.className = "box correct"
-      curr_emoji = ":green_square:"
-    }
-  } else {
-    dory_box.textContent = "Nah"
-    if (CHARACTER_TO_GUESS["name"] != "Nemo") {
-      dory_box.className = "box correct"
-      curr_emoji = ":green_square:"
-    }
-  }
-  setTimeout(() => { // Delayed appending for animation
-      row.append(dory_box)
-    }, 250*i)
 
   row_emoji += curr_emoji
   row_emoji += "\n"
 
   // If correct guess
-  if (char["name"] === CHARACTER_TO_GUESS["name"]) {
+  if (characterEvaluation.correct) {
+    if (cancelGuessesAndWins) {
+      gameWon = true
+      return
+    }
     if (auth == null) {
-      await sendMessage("N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
+      await addToLeaderboard("351911656063893505", GUESSED_CHARACTERS.length) // Nern's ID (for debugging locally)
+      await sendMessage(discordSdk.channelId.toString(), "N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     } else {
       // Add name to leaderboard
-      await addToLeaderboard(auth.user.id)
+      await addToLeaderboard(auth.user.id, GUESSED_CHARACTERS.length)
 
       // Send message in chat about victory!
-      await sendMessage(auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
+      await sendMessage(discordSdk.channelId.toString(), auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
     }
+    gameWon = true
   }
-
-}
-function compareArrays(a, b) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length !== b.length) return false;
-
-  for (var i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
 }
 
 function createRow() {
@@ -447,7 +377,6 @@ function initBoard() {
     height: "Height",
     origin: "Origin",
     firstarc: "First Arc",
-    dory_witness: "Has met Dory from Finding Nemo"
   }
   
   createRow() // header row
@@ -461,10 +390,5 @@ function initBoard() {
     box.className = "header"
     row.append(box)
   }
-
-  let dory_box = document.createElement("div")
-  dory_box.textContent = "Met Dory"
-  dory_box.className = "header"
-  row.append(dory_box)
 
 }

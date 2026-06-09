@@ -1,5 +1,13 @@
+name = "onepiecedle-testing"
+
 compatibility_date = "2026-06-05"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "leaderboard"
 database_id = "3071981b-86b3-4a9f-9630-6dd12352ee41"
+
+[[d1_databases]]
+binding = "dailyguesses"
+database_name = "dailyguesses"
+database_id = "392"

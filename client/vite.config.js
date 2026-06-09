@@ -17,7 +17,7 @@ export default defineConfig({
     },
     allowedHosts: [
       "dev.bridgefandom.com",
-      "mental-nine-news-voted.trycloudflare.com"
+      "according-live-smaller-language.trycloudflare.com"
     ]
   },
 });

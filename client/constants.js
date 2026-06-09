@@ -237,6 +237,7 @@ export const CHARACTERS = [
     addCharacter(["Paulie"],"Male","Galley-La Company","None",[],0,195,"Grand Line",ARCS.WATER7),
     addCharacter(["Iceburg"],"Male","Galley-La Company","None",[],0,199,"Grand Line",ARCS.WATER7),
     addCharacter(["Kalgara"],"Male","Shandia","None",[observation],0,222,"Grand Line",ARCS.SKYPIEA),
+    addCharacter(["Gan Fall", "Fall"], "Male", "God of Skypiea", "None", [observation], 0, 180, "Grand Line", ARCS.SKYPIEA),
     addCharacter(["Chimney"],"Female","Kokoro","None",[],0,115,"Grand Line",ARCS.WATER7),
     addCharacter(["Chew"],"Male","Arlong Pirates","None",[],5500000,257,"Grand Line",ARCS.ARLONGPARK),
     addCharacter(["Kuroobi"],"Male","Arlong Pirates","None",[],9000000,252,"Grand Line",ARCS.ARLONGPARK),
@@ -266,10 +267,9 @@ export const CHARACTERS = [
     addCharacter(["S-Hawk"],"Male","Seraphim","Paramecia",[armament, observation],0,212,"Grand Line",ARCS.EGGHEAD),
     addCharacter(["S-Shark"],"Male","Seraphim","Paramecia",[armament, observation],0,320,"Grand Line",ARCS.EGGHEAD),
     
-    addCharacter(["Nemo"], "Male", "Ocean", "None", [conquerors], 0, 4, "Ocean", ARCS.SKYPIEA)
 ]
 
-function addCharacter(name : String[], gender : String, affiliation : String, df : String, haki : String[], bounty : Number, height : Number, origin : String, firstarc : String) {
+function addCharacter(name, gender, affiliation, df, haki, bounty, height, origin, firstarc) {
     return {
         name,
         gender,
