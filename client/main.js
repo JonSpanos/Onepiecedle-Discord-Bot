@@ -173,10 +173,12 @@ async function attemptCharacter(guessed_name) {
 
     // Serverside logic update
     let data
-    if (auth == null) {
-      data = await guess("351911656063893505", guessed_name)
-    } else {
+    if (auth != null) {
       data = await guess(auth.user.id, guessed_name)
+    } else {
+      let h3 = document.getElementById("testing")
+      h3.textContent = "Authentication to Discord servers have failed."
+      return;
     }
     
     GUESSED_CHARACTERS.push(data.guessed_character)
@@ -327,10 +329,7 @@ async function insertCharInfoInRow(characterEvaluation) {
       gameWon = true
       return
     }
-    if (auth == null) {
-      await addToLeaderboard("351911656063893505", GUESSED_CHARACTERS.length) // Nern's ID (for debugging locally)
-      await sendMessage(discordSdk.channelId.toString(), "N/A: guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
-    } else {
+    if (auth != null) {
       // Add name to leaderboard
       await addToLeaderboard(auth.user.id, GUESSED_CHARACTERS.length)
 
@@ -353,9 +352,7 @@ async function loadBoardState() {
 
   // Now for each character this user has guessed before, let's simulate a guess.
   let guess_data
-  if (auth == null) {
-    guess_data = await getGuesses("351911656063893505")
-  } else {
+  if (auth != null) {
     guess_data = await getGuesses(auth.user.id)
   }
 
@@ -396,5 +393,9 @@ function initBoard() {
     box.className = "header"
     row.append(box)
   }
+
+  // Check if authentication worked
+  let h3 = document.getElementById("testing")
+  h3.textContent = "Authentication failed..."
 
 }
