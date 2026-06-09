@@ -68,6 +68,7 @@ function convertCMtoFeetInches(numInCM) {
 
 setupDiscordSdk().then(() => {
   console.log("Discord SDK is ready");
+  loadBoardState()
 });
 
 let ARCS = ["Romance Dawn", "Orange Town", "Syrup Village", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain", "Whisky Peak",
@@ -131,8 +132,6 @@ LIST_OF_CHARACTER_NAMES = LIST_OF_CHARACTER_NAMES.sort()
 updateDropdownList(LIST_OF_CHARACTER_NAMES)
 
 initBoard()
-
-loadBoardState()
 
 // Configure input
 let input = document.getElementById("guess_input")
@@ -393,9 +392,4 @@ function initBoard() {
     box.className = "header"
     row.append(box)
   }
-
-  // Check if authentication worked
-  let h3 = document.getElementById("testing")
-  h3.textContent = "Authentication failed..."
-
 }
