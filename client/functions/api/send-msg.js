@@ -12,7 +12,7 @@ export async function onRequest(context) {
     WHERE DATE(time_completed) = DATE('now')
     ORDER BY guesses ASC, time_completed ASC
     LIMIT 1
-  `).first();
+  `).run().first();
 
   // Fetch username from ID
   const global_name_response = await fetch(
