@@ -10,7 +10,8 @@ import arm_haki from "/img/Armament.png"
 import obs_haki from "/img/Observation.png"
 import con_haki from "/img/Conqueror.png"
 
-// Declare gamestate var
+// Declare gamestate vars
+let cancelGuessesAndWins = true
 let gameWon = false
 
 // Declare auth code variable 
@@ -359,7 +360,6 @@ async function loadBoardState() {
   }
 
   let j = 0
-  let cancelGuessesAndWins = true
   for (const guessed_char of guess_data.guessed_characters) {
     setTimeout(() => { // Delayed appending for animation
         attemptCharacter(guessed_char.character_name)
