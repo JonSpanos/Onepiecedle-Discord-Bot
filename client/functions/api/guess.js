@@ -119,7 +119,6 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({
         success: true,
         guessed_character,
-        correctCharacter,
         correct: isCorrect,
         eval: {
             name: isCorrect,
