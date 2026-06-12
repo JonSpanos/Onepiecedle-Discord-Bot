@@ -21,6 +21,8 @@ dist-ssr
 # Wrangler stuff
 client/.wrangler
 client/wrangler.toml
+.wrangler 
+wrangler.toml
 
 # Editor directories and files
 .vscode/*

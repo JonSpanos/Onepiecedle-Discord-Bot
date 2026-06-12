@@ -16,8 +16,7 @@ export default defineConfig({
       clientPort: 443,
     },
     allowedHosts: [
-      "dev.bridgefandom.com",
-      "according-live-smaller-language.trycloudflare.com"
+      "tunnel.bridgefandom.com",
     ]
   },
 });

@@ -47,15 +47,19 @@ async function setupDiscordSdk() {
       code,
     }),
   });
+  
   const { access_token } = await response.json();
 
   // Authenticate with Discord client (using the access_token)
-  auth = await discordSdk.commands.authenticate({
-    access_token,
-  });
-
-  if (auth == null) {
-    throw new Error("Authenticate command failed");
+  try {
+    auth = await discordSdk.commands.authenticate({
+      access_token,
+    });
+    if (auth == null) throw new Error("Auth returned null")
+    console.log("auth: ", auth)
+  } catch (err) {
+    console.error("Discord authenticate error: ", err)
+    throw err
   }
 }
 
@@ -68,6 +72,8 @@ function convertCMtoFeetInches(numInCM) {
 
 setupDiscordSdk().then(() => {
   console.log("Discord SDK is ready");
+  let infobar = document.getElementById("testing")
+  infobar.textContent = "Welcome " + auth.user.global_name + "!"
   loadBoardState()
 });
 
@@ -87,58 +93,6 @@ function getRandomDaily(min, max) {
   // Generate random index
   
   return uniqueNum % CHARACTERS.length
-}
-
-let GUESSED_CHARACTERS = []
-
-document.querySelector('#app').innerHTML = `
-  <div id="everything">
-    <img src="${strawhatJollyRoger}" class="logo" alt="" />
-    <h2>Guess today's One Piece character!</h2>
-    <h3 id="guess_total">Number of guesses: 0</h3>
-    <h3 id="testing"></h3>
-    
-    <div id="guess_board">
-    </div>
-
-    <div id="input_zone">
-      <input list="" id="guess_input" 
-      placeholder="Character name" tabindex="0" 
-      type="search" autocomplete="off"> 
-
-      <div class="custom-dropdown">
-        <ul id="custom-dropdown-options">
-
-        </ul>
-      </div>
-    </div>
-  </div>
-`;
-
-
-
-// Build data list for dropdown
-let characterdatalist = document.getElementById("custom-dropdown-options")
-let LIST_OF_CHARACTER_NAMES = []
-
-for (let character of CHARACTERS) {
-  for (let name of character.name) {
-    LIST_OF_CHARACTER_NAMES.push(name)
-  }
-}
-LIST_OF_CHARACTER_NAMES = LIST_OF_CHARACTER_NAMES.sort()
-
-// Add list of names to dropdown menu
-updateDropdownList(LIST_OF_CHARACTER_NAMES)
-
-initBoard()
-
-// Configure input
-let input = document.getElementById("guess_input")
-
-// When you click on input box
-input.onfocus = function () {
-  characterdatalist.style.visibility = "visible"
 }
 
 function updateDropdownList(names) {
@@ -189,20 +143,6 @@ async function attemptCharacter(guessed_name) {
     characterdatalist.style.display = "none"
   }
 }
-
-// When you click enter
-input.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    let first_element_in_dropdown = characterdatalist.childNodes[0].textContent
-    attemptCharacter(first_element_in_dropdown)
-  } else { // Dropdown filtering
-    characterdatalist.style.display = "block"
-    let filtered_character_list = LIST_OF_CHARACTER_NAMES.filter(name => 
-      name.toUpperCase().startsWith(input.value.toUpperCase())
-    )
-    updateDropdownList(filtered_character_list)
-  }
-})
 
 function characterExists(char_str) {
   return CHARACTERS.some(character => character.name.includes(char_str))
@@ -392,3 +332,69 @@ function initBoard() {
     row.append(box)
   }
 }
+
+// Main logic
+
+let GUESSED_CHARACTERS = []
+
+document.querySelector('#app').innerHTML = `
+  <div id="everything">
+    <img src="${strawhatJollyRoger}" class="logo" alt="" />
+    <h2>Guess today's One Piece character!</h2>
+    <h3 id="guess_total">Number of guesses: 0</h3>
+    <h3 id="testing">Authenticating... (If this takes more than 10 seconds, restart the app)</h3>
+    
+    <div id="guess_board">
+    </div>
+
+    <div id="input_zone">
+      <input list="" id="guess_input" 
+      placeholder="Character name" tabindex="0" 
+      type="search" autocomplete="off"> 
+
+      <div class="custom-dropdown">
+        <ul id="custom-dropdown-options">
+
+        </ul>
+      </div>
+    </div>
+  </div>
+`;
+
+// Build data list for dropdown
+let characterdatalist = document.getElementById("custom-dropdown-options")
+let LIST_OF_CHARACTER_NAMES = []
+
+for (let character of CHARACTERS) {
+  for (let name of character.name) {
+    LIST_OF_CHARACTER_NAMES.push(name)
+  }
+}
+LIST_OF_CHARACTER_NAMES = LIST_OF_CHARACTER_NAMES.sort()
+
+// Add list of names to dropdown menu
+updateDropdownList(LIST_OF_CHARACTER_NAMES)
+
+initBoard()
+
+// Configure input
+let input = document.getElementById("guess_input")
+
+// When you click on input box
+input.onfocus = function () {
+  characterdatalist.style.visibility = "visible"
+}
+
+// When you click enter
+input.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    let first_element_in_dropdown = characterdatalist.childNodes[0].textContent
+    attemptCharacter(first_element_in_dropdown)
+  } else { // Dropdown filtering
+    characterdatalist.style.display = "block"
+    let filtered_character_list = LIST_OF_CHARACTER_NAMES.filter(name => 
+      name.toUpperCase().startsWith(input.value.toUpperCase())
+    )
+    updateDropdownList(filtered_character_list)
+  }
+})
