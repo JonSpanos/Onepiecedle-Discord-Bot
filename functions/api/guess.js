@@ -1,4 +1,4 @@
-import { CHARACTERS } from "../../client/constants.js";
+import { CHARACTERS } from "../../constants.js";
 
 const correctCharacter = CHARACTERS[getRandomDaily(0, CHARACTERS.length)]
 const ARCS = ["Romance Dawn", "Orange Town", "Syrup Village", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain", "Whisky Peak",

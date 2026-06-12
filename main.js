@@ -342,7 +342,7 @@ document.querySelector('#app').innerHTML = `
     <img src="${strawhatJollyRoger}" class="logo" alt="" />
     <h2>Guess today's One Piece character!</h2>
     <h3 id="guess_total">Number of guesses: 0</h3>
-    <h3 id="testing">Authenticating... (If this takes more than 10 seconds, restart the app)</h3>
+    <h3 id="testing">Authenticating... (If this takes more than 5 seconds, restart the app)</h3>
     
     <div id="guess_board">
     </div>
