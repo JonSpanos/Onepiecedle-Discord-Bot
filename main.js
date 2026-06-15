@@ -1,31 +1,23 @@
-// Import the SDK
+// Import dependencies
 import { DiscordSDK } from "@discord/embedded-app-sdk";
-import { CHARACTERS } from "./constants.js"
-import {addToLeaderboard, getGuesses, guess, sendMessage} from "./public/api_calls.js"
+import { CHARACTERS } from "./src/constants.js"
+import { buildHeaders, pushGuessToRow } from "./src/board.js"
+import { game_state } from "./src/game_state.js";
+import {addToLeaderboard, getGuesses, guess, sendMessage} from "./src/api_calls.js"
 import "./style.css";
 
 // Images
 import strawhatJollyRoger from '/img/strawhat_jolly_roger.png';
-import arm_haki from "/img/Armament.png"
-import obs_haki from "/img/Observation.png"
-import con_haki from "/img/Conqueror.png"
-
-// Declare gamestate vars
-let cancelGuessesAndWins = true
-let gameWon = false
-
-// Declare auth code variable 
-let auth;
 
 // Instantiate the SDK
-const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
+game_state.discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
 
 async function setupDiscordSdk() {
-  await discordSdk.ready();
+  await game_state.discordSdk.ready();
   console.log("Discord SDK is ready");
 
   // Authorize with Discord Client
-  const { code } = await discordSdk.commands.authorize({
+  const { code } = await game_state.discordSdk.commands.authorize({
     client_id: import.meta.env.VITE_DISCORD_CLIENT_ID,
     response_type: "code",
     state: "",
@@ -52,36 +44,22 @@ async function setupDiscordSdk() {
 
   // Authenticate with Discord client (using the access_token)
   try {
-    auth = await discordSdk.commands.authenticate({
+    game_state.auth = await game_state.discordSdk.commands.authenticate({
       access_token,
     });
-    if (auth == null) throw new Error("Auth returned null")
-    console.log("auth: ", auth)
+    if (game_state.auth == null) throw new Error("Auth returned null")
   } catch (err) {
     console.error("Discord authenticate error: ", err)
     throw err
   }
 }
 
-function convertCMtoFeetInches(numInCM) {
-  const totalInches = numInCM / 2.54;             // 1 inch = 2.54 cm
-  const feet = Math.floor(totalInches / 12); // 1 foot = 12 inches
-  const inches = Math.round(totalInches % 12); // remaining inches
-  return { feet, inches };
-}
-
 setupDiscordSdk().then(() => {
   console.log("Discord SDK is ready");
-  let infobar = document.getElementById("testing")
-  infobar.textContent = "Welcome " + auth.user.global_name + "!"
+  let infobar = document.getElementById("info_header")
+  infobar.textContent = "Welcome " + game_state.auth.user.global_name + "!"
   loadBoardState()
 });
-
-let ARCS = ["Romance Dawn", "Orange Town", "Syrup Village", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain", "Whisky Peak",
-  "Little Garden", "Drum Island", "Alabasta", "Jaya", "Skypiea", "Long Ring Long Land", "Water 7", "Enies Lobby", "Post-Enies Lobby",
-  "Thriller Bark", "Sabaody Archipelago", "Amazon Lily", "Impel Down", "Marineford", "Post-War", "Return to Sabaody", "Fish-Man Island",
-  "Punk Hazard", "Dressrosa", "Zou", "Whole Cake Island", "Reverie", "Wano Country", "Egghead", "Elbaf" 
-]
 
 function getRandomDaily(min, max) {
   // Use date for random number
@@ -114,7 +92,7 @@ function updateDropdownList(names) {
 }
 
 function notAlreadyGuessed(name) {
-  if (GUESSED_CHARACTERS.find(character => character.name.includes(name))) {
+  if (game_state.guesses.find(character => character.name.includes(name))) {
     return false
   } else {
     return true
@@ -122,176 +100,36 @@ function notAlreadyGuessed(name) {
 }
 
 async function attemptCharacter(guessed_name) {
-  if (!gameWon && characterExists(guessed_name) && notAlreadyGuessed(guessed_name)) {
-
-    // Serverside logic update
-    let data
-    if (auth != null) {
-      data = await guess(auth.user.id, guessed_name)
-    } else {
-      let h3 = document.getElementById("testing")
-      h3.textContent = "Authentication to Discord servers have failed."
-      return;
-    }
-    
-    GUESSED_CHARACTERS.push(data.guessed_character)
-    document.getElementById("guess_total").textContent = "Number of guesses: " + GUESSED_CHARACTERS.length
-    
-    insertCharInfoInRow(data)
-    
-    document.getElementById("guess_input").value = "" // Wipe input
-    characterdatalist.style.display = "none"
+  if (game_state.gameWon) return // Don't attempt a guess if the game has already been won
+  if (characterExists(guessed_name) && !notAlreadyGuessed(guessed_name)) return // Don't attempt a guess if you've already guessed the same character
+  
+  let data
+  if (game_state.auth != null) {
+    data = await guess(game_state.auth.user.id, guessed_name)
+  } else {
+    let h3 = document.getElementById("info_header")
+    h3.textContent = "Authentication to Discord servers have failed."
+    return;
   }
+  
+  game_state.guesses.push(data.guessed_character)
+  document.getElementById("guess_total").textContent = "Number of guesses: " + game_state.guesses.length
+  
+  pushGuessToRow(data)
+  
+  document.getElementById("guess_input").value = "" // Wipe input
+  characterdatalist.style.display = "none"
 }
 
 function characterExists(char_str) {
   return CHARACTERS.some(character => character.name.includes(char_str))
 }
 
-// Stolen cause idc
-function abbrNum(number, decPlaces) {
-  // 2 decimal places => 100, 3 => 1000, etc
-  decPlaces = Math.pow(10, decPlaces);
-
-  // Enumerate number abbreviations
-  var abbrev = ["K", "M", "B", "T"];
-
-  // Go through the array backwards, so we do the largest first
-  for (var i = abbrev.length - 1; i >= 0; i--) {
-
-    // Convert array index to "1000", "1000000", etc
-    var size = Math.pow(10, (i + 1) * 3);
-
-    // If the number is bigger or equal do the abbreviation
-    if (size <= number) {
-      // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-      // This gives us nice rounding to a particular decimal place.
-      number = Math.round(number * decPlaces / size) / decPlaces;
-
-      // Handle special case where we round up to the next abbreviation
-      if ((number == 1000) && (i < abbrev.length - 1)) {
-        number = 1;
-        i++;
-      }
-
-      // Add the letter for the abbreviation
-      number += abbrev[i];
-
-      // We are done... stop
-      break;
-    }
-  }
-
-  return number;
-}
-
-let row_emoji = "" // Row of emojis
-
-async function insertCharInfoInRow(characterEvaluation) {
-  let curr_emoji = ""
-  createRow() // Create new row for guess
-  let rows = document.getElementsByClassName("row")
-
-  let row = rows[GUESSED_CHARACTERS.length] // First row says what each col is for
-  let i = 0 
-
-  const char = characterEvaluation.guessed_character
-
-  for (let info of Object.keys(char)) {
-    let box = document.createElement("div")
-    let text = document.createElement("p")
-    text.className = "text"
-
-    text.textContent = characterEvaluation.guessed_character[info]
-    
-    // Custom text values
-    if (info == "name") text.textContent = characterEvaluation.guessed_character[info][0]
-    if (info == "bounty") text.textContent = abbrNum(char[info], 3)
-    if (info == "height") { // Convert text to feet and inches
-      let {feet, inches} = convertCMtoFeetInches(char[info])
-      text.textContent = feet + "'" + inches + '"'
-    }
-    // Images instead of text
-    if (info == "haki") {
-      if (char[info].length === 0) text.textContent = "None"; else text.textContent = ""
-      char[info].forEach(haki => {
-        let img = document.createElement("img")
-        if (haki === "Armament") {img.src = arm_haki}
-        else if (haki === "Observation") {img.src = obs_haki}
-        else if (haki === "Conquerors") {img.src = con_haki}
-        img.className = "icon"
-        box.append(img)
-      })
-    }
-
-    // Assign box properties and emoji for send_messages
-    if (characterEvaluation.eval[info] == 0) {
-      box.className = "box wrong"
-      curr_emoji = ":red_square:"
-    } else if (characterEvaluation.eval[info] == 1) {
-      box.className = "box correct"
-      curr_emoji = ":green_square:"
-    } else {
-      box.className = "box partial"
-      curr_emoji = ":yellow_square:"
-    }
-    
-    // Assign arrows
-    if ((info === "bounty" || info === "height" || info == "firstarc") && curr_emoji != ":green_square:") {
-      // Rewrite box properties and emoji
-      box.className = "box wrong"
-      curr_emoji = ":red_square:"
-
-      let arrow = document.createElement("div")
-      if (characterEvaluation.eval[info] == 2) {
-        arrow.className = "uparrow"
-      } else if (characterEvaluation.eval[info] == 3) {
-        arrow.className = "downarrow"
-      }
-      box.append(arrow)
-    }
-
-    box.append(text)
-    setTimeout(() => { // Delayed appending for animation
-      row.append(box)
-    }, 250*i)
-    i++
-    row_emoji += curr_emoji
-  }
-
-  row_emoji += curr_emoji
-  row_emoji += "\n"
-
-  // If correct guess
-  if (characterEvaluation.correct) {
-    if (cancelGuessesAndWins) {
-      gameWon = true
-      return
-    }
-    if (auth != null) {
-      // Add name to leaderboard
-      await addToLeaderboard(auth.user.id, GUESSED_CHARACTERS.length)
-
-      // Send message in chat about victory!
-      await sendMessage(discordSdk.channelId.toString(), auth.user.global_name + ": guessed " + GUESSED_CHARACTERS.length + " times.\n"+row_emoji)
-    }
-    gameWon = true
-  }
-}
-
-function createRow() {
-    let board = document.getElementById("guess_board");
-    let row = document.createElement("div")
-    row.className = "row"
-    
-    board.appendChild(row)
-}
-
 async function loadBoardState() {
   // Now for each character this user has guessed before, let's simulate a guess.
   let guess_data
-  if (auth != null) {
-    guess_data = await getGuesses(auth.user.id)
+  if (game_state.auth != null) {
+    guess_data = await getGuesses(game_state.auth.user.id)
   }
 
   let j = 0
@@ -302,47 +140,19 @@ async function loadBoardState() {
       j++
   }
   setTimeout(() => {
-    cancelGuessesAndWins = false
+    game_state.haltInput = false
   }, 250*j)
 
 }
 
-function initBoard() {
-  let infoConversions = {
-    df: "Devil Fruit",
-    name: "Name",
-    gender: "Gender",
-    affiliation: "Affiliation",
-    haki: "Haki",
-    bounty: "Bounty",
-    height: "Height",
-    origin: "Origin",
-    firstarc: "First Arc",
-  }
-  
-  createRow() // header row
-
-  let rows = document.getElementsByClassName("row")
-  let row = rows[0] // First row says what each col is for
-  for (let info of Object.keys(CHARACTERS[0])) {
-    let box = document.createElement("div")
-    box.textContent = infoConversions[info]
-    
-    box.className = "header"
-    row.append(box)
-  }
-}
-
 // Main logic
-
-let GUESSED_CHARACTERS = []
 
 document.querySelector('#app').innerHTML = `
   <div id="everything">
     <img src="${strawhatJollyRoger}" class="logo" alt="" />
     <h2>Guess today's One Piece character!</h2>
     <h3 id="guess_total">Number of guesses: 0</h3>
-    <h3 id="testing">Authenticating... (If this takes more than 5 seconds, restart the app)</h3>
+    <h3 id="info_header">Authenticating... (If this takes more than 5 seconds, restart the app)</h3>
     
     <div id="guess_board">
     </div>
@@ -375,7 +185,8 @@ LIST_OF_CHARACTER_NAMES = LIST_OF_CHARACTER_NAMES.sort()
 // Add list of names to dropdown menu
 updateDropdownList(LIST_OF_CHARACTER_NAMES)
 
-initBoard()
+// Build row headers
+buildHeaders()
 
 // Configure input
 let input = document.getElementById("guess_input")

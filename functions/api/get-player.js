@@ -1,8 +1,4 @@
-export async function onRequest(context) {
-  if (context.request.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
-  }
-
+export async function onRequestPost(context) {
   const { access_token } = await context.request.json();
 
   const response = await fetch("https://discord.com/api/v10/users/@me", {

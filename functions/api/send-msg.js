@@ -1,7 +1,4 @@
-export async function onRequest(context) {
-  if (context.request.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
-  }
+export async function onRequestPost(context) {
 
   const { channelId, message } = await context.request.json();
 

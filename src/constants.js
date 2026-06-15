@@ -1,7 +1,15 @@
 let armament = "Armament"
 let observation = "Observation"
 let conquerors = "Conquerors"
-export const ARCS = {
+
+export const STATUS = Object.freeze({
+    INCORRECT: 0,
+    CORRECT: 1,
+    GREATER: 2, // or partial
+    LESSER: 3
+})
+
+export const ARCS = Object.freeze({
     ROMANCEDAWN: "Romance Dawn", 
     ORANGETOWN: "Orange Town", 
     SYRUPVILLAGE: "Syrup Village", 
@@ -35,7 +43,7 @@ export const ARCS = {
     WANOCOUNTRY: "Wano Country",
     EGGHEAD: "Egghead", 
     ELBAF: "Elbaf" 
-}
+})
 
 export const CHARACTERS = [
     // Strawhat Pirates
@@ -270,7 +278,7 @@ export const CHARACTERS = [
 ]
 
 function addCharacter(name, gender, affiliation, df, haki, bounty, height, origin, firstarc) {
-    return {
+    return Object.freeze({
         name,
         gender,
         affiliation,
@@ -280,5 +288,5 @@ function addCharacter(name, gender, affiliation, df, haki, bounty, height, origi
         height,
         origin,
         firstarc
-    }
+    })
 }
