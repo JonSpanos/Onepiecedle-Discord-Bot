@@ -151,6 +151,7 @@ export const CHARACTERS = [
     addCharacter(["Charlotte Katakuri", "Katakuri"], "Male", "Charlotte Family", "Paramecia", [armament, observation, conquerors], 1057000000, 509, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Perospero", "Perospero"], "Male", "Charlotte Family", "Paramecia", [armament, observation], 700000000, 333, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Cracker", "Cracker"], "Male", "Charlotte Family", "Paramecia", [armament, observation], 860000000, 307, "Grand Line", ARCS.WCI),
+    addCharacter(["Charlotte Oven", "Oven"], "Male" , "Charlotte Family" , "Paramecia" ,[armament, observation], 300000000, 492, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Mont-d'Or", "Mont-d'Or", "Montdor"], "Male", "Charlotte Family", "Paramecia", [], 1200000, 260, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Brûlée", "Brûlée", "Brulee"], "Female", "Charlotte Family", "Paramecia", [], 0, 350, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Smoothie", "Smoothie"], "Female", "Charlotte Family", "Paramecia", [armament, observation], 932000000, 464, "Grand Line", ARCS.WCI),
