@@ -14,13 +14,16 @@
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
+#app {
+  display: block;
+  padding-top: 10rem;
+  text-align: center;
+}
 
 a {
   font-weight: 500;
@@ -34,13 +37,6 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 #input_zone {
@@ -119,11 +115,10 @@ button:focus-visible {
 
 
 #guess_board {
-  display: inline-flex;
-  max-height: 60vh;
+  display: flex;
   flex-direction: column;
   gap: 10px; /* space between rows */
-  overflow-y:auto;
+  max-height: 80vh;
 }
 
 .row {
@@ -237,15 +232,22 @@ button:focus-visible {
 /* Styles for screens up to 480px wide (typical smartphone) */
 @media (max-width: 480px) {
   body {
-      font-size: 12px;
+    font-size: 12px;
   }
-  #everything {
-    margin-top: -50vw;
-    align-items: center;
+  #info_header {
+    font-size: 10px;
+  }
+  .header {
+    width: 15vw;
+    height: 3vh;
+  }
+  .box {
+    width: 15vw;
+    height: 15vw; /* using vw here to keep the box uniform */
   }
   #guess_board {
-    width:80vw;
-    max-height: 17vh;
+    width: 80vw;
+    height: 50vh;
     overflow:scroll;
   }
 

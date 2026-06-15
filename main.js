@@ -56,8 +56,9 @@ async function setupDiscordSdk() {
 
 setupDiscordSdk().then(() => {
   console.log("Discord SDK is ready");
-  let infobar = document.getElementById("info_header")
-  infobar.textContent = "Welcome " + game_state.auth.user.global_name + "!"
+  // Shows authenticating until confirmed, then switches to guess counter!
+  let guess_counter = document.getElementById("guess_total")
+  guess_counter.textContent = "Number of guesses: 0"
   loadBoardState()
 });
 
@@ -107,7 +108,7 @@ async function attemptCharacter(guessed_name) {
   if (game_state.auth != null) {
     data = await guess(game_state.auth.user.id, guessed_name)
   } else {
-    let h3 = document.getElementById("info_header")
+    let h3 = document.getElementById("guess_total")
     h3.textContent = "Authentication to Discord servers have failed."
     return;
   }
@@ -151,8 +152,7 @@ document.querySelector('#app').innerHTML = `
   <div id="everything">
     <img src="${strawhatJollyRoger}" class="logo" alt="" />
     <h2>Guess today's One Piece character!</h2>
-    <h3 id="guess_total">Number of guesses: 0</h3>
-    <h3 id="info_header">Authenticating... (If this takes more than 5 seconds, restart the app)</h3>
+    <h3 id="guess_total">Authenticating...</h3>
     
     <div id="guess_board">
     </div>
