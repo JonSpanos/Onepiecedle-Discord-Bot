@@ -58,7 +58,7 @@ export const CHARACTERS = [
     addCharacter(["Brook", "Soul King", "Humming Brook"], "Male", "Strawhat Pirates", "Paramecia", [], 383000000, 277, "West Blue", ARCS.THRILLERBARK),
     addCharacter(["Jinbe", "Knight of the Sea", "First Son of the Sea", "Boss Jinbe"], "Male", "Strawhat Pirates", "None", [armament, observation], 1100000000, 301, "Grand Line", ARCS.IMPELDOWN),
     
-    // Misc. Major Villains (Unless they fit in more specific groupings like Admirals)
+    // Misc. Major Villains (Unless they fit better in more specific groupings like Admirals)
     addCharacter(["Alvida", "Iron-Mace"], "Female", "Cross Guild", "Paramecia", [], 5000000, 198, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Morgan", "Axe-Hand"], "Male", "Marines", "None", [], 0, 285, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Kuro"], "Male", "Black Cat Pirates", "None", [], 16000000, 207, "East Blue", ARCS.SYRUPVILLAGE),
@@ -74,10 +74,10 @@ export const CHARACTERS = [
     addCharacter(["Hody Jones"], "Male", "New Fish-Man Pirates", "None", [], 0, 331, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Caesar Clown", "Master"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
     addCharacter(["Donquixote Doflamingo", "Doflamingo"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation, conquerors], 340000000, 305, "Red Line", ARCS.JAYA),
-    addCharacter(["Jack"], "Male", "Beast Pirates", "Zoan", [armament, observation], 1000000000, 830, "Grand Line", ARCS.ZOU),
     addCharacter(["Kurozumi Orochi", "Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
 
     // Beast Pirates
+    addCharacter(["Jack"], "Male", "Beast Pirates", "Zoan", [armament, observation], 1000000000, 830, "Grand Line", ARCS.ZOU),
     addCharacter(["Ulti"],"Female","Yamato","Zoan",[armament, observation],400000000,173,"Grand Line",ARCS.WANOCOUNTRY),
     addCharacter(["Page One"],"Male","Yamato","Zoan",[armament, observation],290000000,171,"Grand Line",ARCS.WANOCOUNTRY),
     addCharacter(["Queen"],"Male","Beast Pirates","Zoan",[armament, observation],1320000000,612,"Grand Line",ARCS.WANOCOUNTRY),
@@ -182,7 +182,6 @@ export const CHARACTERS = [
     addCharacter(["Makino"], "Female", "Partys Bar", "None", [], 0, 166, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Gaimon"], "Male", "None", "None", [], 0, 130, "East Blue", ARCS.SYRUPVILLAGE),
     addCharacter(["Nojiko"], "Female", "None", "None", [], 0, 170, "East Blue", ARCS.ARLONGPARK),
-    addCharacter(["Kurozumi Orochi", "Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Jaguar D. Saul", "Saul"], "Male", "Walrus School", "None", [], 0, 1950, "South Blue", ARCS.ENIESLOBBY),
     addCharacter(["Vinsmoke Yonji", "Yonji"], "Male", "Vinsmoke Family", "None", [], 0, 194, "North Blue", ARCS.WCI),
     addCharacter(["Vinsmoke Reiju", "Reiju"], "Female", "Vinsmoke Family", "None", [], 0, 173, "North Blue", ARCS.WCI),
@@ -190,17 +189,22 @@ export const CHARACTERS = [
     addCharacter(["Vinsmoke Judge", "Judge"], "Male", "Vinsmoke Family", "None", [], 0, 272, "North Blue", ARCS.WCI),
     addCharacter(["Vinsmoke Ichiji", "Ichiji"], "Male", "Vinsmoke Family", "None", [], 0, 186, "North Blue", ARCS.WCI),
 
-    addCharacter(["Kikunojo"], "Female", "Kouzuki Family", "None", [armament, observation], -1, 287, "Grand Line", ARCS.WANOCOUNTRY),
+    // Scabbards and other Wano-related character
     addCharacter(["Kin'emon", "Kinemon"], "Male", "Kouzuki Family", "Paramecia", [armament, observation], 0, 295, "Grand Line", ARCS.PUNKHAZARD),
+    addCharacter(["Kanjuro", "Kurozumi Kanjuro"], "Male", "Kurozumi Family", "Paramecia",[armament, observation], 0, 347, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Kouzuki Momonosuke", "Momonosuke"], "Male", "Kouzuki Family", "Zoan", [observation], 0, 110, "Grand Line", ARCS.PUNKHAZARD),
+    addCharacter(["Raizo"], "Male", "Kouzuki Family", "Paramecia", [armament, observation], 0, 311, "Grand Line", ARCS.ZOU),
+    addCharacter(["Kikunojo"], "Female", "Kouzuki Family", "None", [armament, observation], 0, 287, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Kawamatsu"], "Male", "Kouzuki Family", "None", [armament, observation], 0, 271, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Shinobu"], "Female", "Kouzuki Family", "Paramecia", [], 0, 180, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Denjiro", "Kyoshiro"], "Male", "Kouzuki Family", "None", [armament, observation], 0, 306, "Grand Line", ARCS.WANOCOUNTRY),
-    addCharacter(["Toko"], "Female", "Kouzuki Hiyori", "None", [], 0, 89, "Unknown", ARCS.WANOCOUNTRY),
-    addCharacter(["Raizo"], "Male", "Kouzuki Family", "Paramecia", [armament, observation], 0, 311, "Grand Line", ARCS.ZOU),
     addCharacter(["Kouzuki Toki", "Toki"], "Female", "Kouzuki Family", "Paramecia", [], 0, 190, "Unknown", ARCS.WANOCOUNTRY),
     addCharacter(["Kouzuki Oden", "Oden"], "Male", "Kouzuki Family", "None", [armament, observation, conquerors], 0, 382, "Grand Line", ARCS.WANOCOUNTRY),
-    addCharacter(["Kouzuki Momonosuke", "Momonosuke"], "Male", "Kouzuki Family", "Zoan", [observation], 0, 110, "Grand Line", ARCS.PUNKHAZARD),
+    addCHaracter(["Yamato"], "Male", "Ninja-Pirate-Mink-Samurai Alliance", "Zoan", [armament, observation, conquerors], 0, 263, "Grand Line", ARCS.WANOCOUNTRY),
+    addCharacter(["Toko"], "Female", "Kouzuki Hiyori", "None", [], 0, 89, "Unknown", ARCS.WANOCOUNTRY),
+    addCharacter(["Tama", "Kurozumi Tama"], "Female", "Kurozumi Family", "Paramecia", [], 0, 108, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Kouzuki Hiyori", "Hiyori"], "Female", "Kouzuki Family", "None", [], 0, 170, "Grand Line", ARCS.WANOCOUNTRY),
+    
     addCharacter(["Silvers Rayleigh", "Rayleigh"], "Male", "Roger Pirates", "None", [armament, observation, conquerors], 0, 188, "Unknown", ARCS.ORANGETOWN),
     addCharacter(["Gol D. Roger", "Roger", "Gold Roger"], "Male", "Roger Pirates", "None", [armament, observation, conquerors], 5564000000, 274, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Viola"], "Female", "Riku Family", "Paramecia", [], 0, 178, "Grand Line", ARCS.DRESSROSA),
@@ -217,7 +221,6 @@ export const CHARACTERS = [
     addCharacter(["Hiriluk"], "Male", "None", "None", [], 0, 213, "Grand Line", ARCS.DRUMISLAND),
     addCharacter(["Dalton"], "Male", "Sakura Kingdom", "Zoan", [], 0, 218, "Grand Line", ARCS.DRUMISLAND),
     addCharacter(["Kureha"], "Female", "Sakura Kingdom", "None", [], 0, 188, "Grand Line", ARCS.DRUMISLAND),
-    addCharacter(["Tama", "Kurozumi Tama"], "Female", "Kurozumi Family", "Paramecia", [], 0, 108, "Grand Line", ARCS.WANOCOUNTRY),
     addCharacter(["Jewelry Bonney", "Bonney"], "Female", "Bonney Pirates", "Paramecia", [armament], 320000000, 174, "Red Line", ARCS.SABAODY),
     addCharacter(["X Drake", "Drake"], "Male", "Marines", "Zoan", [armament, observation], 222000000, 233, "North Blue", ARCS.SABAODY),
     addCharacter(["Capone Bege", "Bege"], "Male", "Fire Tank Pirates", "Paramecia", [], 350000000, 166, "West Blue", ARCS.SABAODY),
@@ -274,6 +277,16 @@ export const CHARACTERS = [
     addCharacter(["S-Bear"],"Male","Seraphim","Paramecia",[armament, observation],0,660,"Grand Line",ARCS.EGGHEAD),
     addCharacter(["S-Hawk"],"Male","Seraphim","Paramecia",[armament, observation],0,212,"Grand Line",ARCS.EGGHEAD),
     addCharacter(["S-Shark"],"Male","Seraphim","Paramecia",[armament, observation],0,320,"Grand Line",ARCS.EGGHEAD),
+    
+    // Fake Straw Hats
+    addCharacter(["Demalo Black", "Fake Luffy"], "Male", "Fake Straw Hat Crew", "None", [], 26000000, 245, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Manjaro", "Fake Zoro"], "Male", "Fake Straw Hat Crew", "None", [], 0, 202, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Chocolat", "Fake Nami"], "Female", "Fake Straw Hat Crew", "None", [], 0, 181, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Mounblutain", "Fake Usopp"], "Male", "Fake Straw Hat Crew", "None", [], 0, 294, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Drip", "Fake Sanji"], "Male", "Fake Straw Hat Crew", "None", [], 0, 208, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Nora Gitsune", "Gitsune", "Fake Chopper"], "Male", "Fake Straw Hat Crew", "None", [], 0, 103, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Cocoa", "Fake Robin"], "Female", "Fake Straw Hat Crew", "None", [], 0, 138, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Turco", "Fake Franky"], "Male", "Fake Straw Hat Crew", "None", [], 0, 258, "East Blue", ARCS.RETURNTOSABAODY),
     
 ]
 
