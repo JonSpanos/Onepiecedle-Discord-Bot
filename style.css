@@ -113,12 +113,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
 #guess_board {
   display: flex;
   flex-direction: column;
   gap: 10px; /* space between rows */
-  max-height: 80vh;
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 
 .row {

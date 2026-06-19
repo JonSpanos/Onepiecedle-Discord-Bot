@@ -27,7 +27,7 @@ function convertCMtoFeetInches(numInCM) {
   return { feet, inches };
 }
 
-function evaluateInfo(char, info) {
+function evaluateInfo(char, info, correctCharacter) {
     // First check if the info is identical
     if (char[info] === correctCharacter[info]) return STATUS.CORRECT
 
@@ -115,14 +115,14 @@ export async function onRequestPost(context) {
         correct: isCorrect,
         eval: {
             name: isCorrect,
-            gender: evaluateInfo(guessed_character, "gender"),
-            affiliation: evaluateInfo(guessed_character, "affiliation"),
-            df: evaluateInfo(guessed_character, "df"),
-            haki: evaluateInfo(guessed_character, "haki"),
-            bounty: evaluateInfo(guessed_character, "bounty"),
-            height: evaluateInfo(guessed_character, "height"),
-            origin: evaluateInfo(guessed_character, "origin"),
-            firstarc: evaluateInfo(guessed_character, "firstarc")
+            gender: evaluateInfo(guessed_character, "gender", correctCharacter),
+            affiliation: evaluateInfo(guessed_character, "affiliation", correctCharacter),
+            df: evaluateInfo(guessed_character, "df", correctCharacter),
+            haki: evaluateInfo(guessed_character, "haki", correctCharacter),
+            bounty: evaluateInfo(guessed_character, "bounty", correctCharacter),
+            height: evaluateInfo(guessed_character, "height", correctCharacter),
+            origin: evaluateInfo(guessed_character, "origin", correctCharacter),
+            firstarc: evaluateInfo(guessed_character, "firstarc", correctCharacter)
         }
     }), {
         status: 200,
