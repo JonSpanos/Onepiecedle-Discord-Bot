@@ -1,7 +1,5 @@
 import { ARCS, CHARACTERS, STATUS} from "../../src/constants.js";
 
-const correctCharacter = CHARACTERS[getRandomDaily()]
-
 // Helper functions
 function getRandomDaily() {
     const estDateStr = new Date().toLocaleString('en-US', {timeZone: 'America/New_York'})
@@ -83,6 +81,9 @@ export async function onRequestPost(context) {
     if (!user_id || !guessed_character_name) {
         return new Response("Missing fields", { status: 400 });
     }
+    
+    // Check who the correct character for the day is...
+    const correctCharacter = CHARACTERS[getRandomDaily()]
 
     const isCorrect = correctCharacter.name.includes(guessed_character_name)
 
