@@ -62,18 +62,6 @@ setupDiscordSdk().then(() => {
   loadBoardState()
 });
 
-function getRandomDaily(min, max) {
-  // Use date for random number
-  let date = new Date();
-  let datePieces = [date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()];
-  let dailynum = +datePieces.join('')
-  let uniqueNum = Math.pow(dailynum, 2)
-
-  // Generate random index
-  
-  return uniqueNum % CHARACTERS.length
-}
-
 function updateDropdownList(names) {
 
   characterdatalist.innerHTML = ``

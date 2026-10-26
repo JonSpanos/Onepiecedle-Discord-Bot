@@ -1,8 +1,9 @@
 import { ARCS, CHARACTERS, STATUS} from "../../src/constants.js";
 
+const estDateStr = new Date().toLocaleDateString('en-US', {timezone: 'America/New_York'})
+
 // Helper functions
 function getRandomDaily() {
-    const estDateStr = new Date().toLocaleString('en-US', {timeZone: 'America/New_York'})
     const estDate = new Date(estDateStr)
     const index = estDate.getDate() % CHARACTERS.length
 
@@ -99,7 +100,7 @@ export async function onRequestPost(context) {
     );`).run();
     
     // Get day
-    const day = new Date().toISOString().slice(0,10); // ex: 2026-06-08
+    const day = new Date(estDateStr).toISOString().slice(0,10); // ex: 2026-06-08
     await context.env.DB.prepare(`
       INSERT OR IGNORE INTO DailyGuesses (user_id, day, character_name)
       VALUES (?, ?, ?)`)

@@ -6,7 +6,7 @@ export async function onRequestPost(context) {
   const best_player = await context.env.DB.prepare(`
     SELECT user_id, guesses
     FROM Leaderboard
-    WHERE DATE(time_completed) = DATE('now')
+    WHERE DATE(time_completed) = DATE('now', 'localtime')
     ORDER BY guesses ASC, time_completed ASC
     LIMIT 1
   `).first();
