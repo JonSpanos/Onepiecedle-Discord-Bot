@@ -4,5 +4,6 @@ export const game_state = {
     guesses: [],
     gameWon: false,
     haltInput: true,
+    pendingGuess : false,
     rowEmoji: ""
 }

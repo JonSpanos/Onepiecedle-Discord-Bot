@@ -90,8 +90,9 @@ function notAlreadyGuessed(name) {
 
 async function attemptCharacter(guessed_name) {
   if (game_state.gameWon) return // Don't attempt a guess if the game has already been won
+  if (game_state.pendingGuess) return // Don't attempt a guess if we're waiting on a guess to return
   if (characterExists(guessed_name) && !notAlreadyGuessed(guessed_name)) return // Don't attempt a guess if you've already guessed the same character
-  
+  game_state.pendingGuess = true
   let data
   if (game_state.auth != null) {
     data = await guess(game_state.auth.user.id, guessed_name)
@@ -108,6 +109,8 @@ async function attemptCharacter(guessed_name) {
   
   document.getElementById("guess_input").value = "" // Wipe input
   characterdatalist.style.display = "none"
+
+  game_state.pendingGuess = false
 }
 
 function characterExists(char_str) {
