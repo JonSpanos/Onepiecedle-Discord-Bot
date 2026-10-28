@@ -171,10 +171,10 @@ export const CHARACTERS = [
     addCharacter(["Hina"],"Female","Marines","Paramecia",[],200000000,181,"West Blue",ARCS.ALABASTA),
     addCharacter(["Sentomaru"], "Male", "Marines", "None", [armament, observation], 500000000, 279, "Grand Line", ARCS.SABAODY),
     addCharacter(["Tsuru"], "Female", "Marines", "Paramecia", [armament, observation], 500000000, 204, "North Blue", ARCS.JAYA),
-    addCharacter(["Monkey D. Garp", "Garp"], "Male", "Marines", "None", [armament, observation, conquerors], 3000000000, 287, "East Blue", ARCS.ARLONGPARK),
-    addCharacter(["Nefertari Vivi", "Vivi", "Ms. Wednesday"], "Female", "Alabasta Kingdom", "None", [], 0, 169, "Grand Line", ARCS.REVERSEMOUNTAIN),
-    addCharacter(["Nefertari Cobra", "Cobra", "King of Alabasta"], "Male", "Alabasta Kingdom", "None", [], 0, 182, "Grand Line", ARCS.DRUMISLAND),
-    addCharacter(["Boa Hancock", "Hancock", "Pirate Empress"], "Female", "Kuja Pirates", "Paramecia", [armament, observation, conquerors], 1659000000, 191, "Calm Belt", ARCS.AMAZONLILY),
+    addCharacter(["Monkey D. Garp"], "Male", "Marines", "None", [armament, observation, conquerors], 3000000000, 287, "East Blue", ARCS.ARLONGPARK),
+    addCharacter(["Nefertari Vivi", "Ms. Wednesday"], "Female", "Alabasta Kingdom", "None", [], 0, 169, "Grand Line", ARCS.REVERSEMOUNTAIN),
+    addCharacter(["Nefertari Cobra", "King of Alabasta"], "Male", "Alabasta Kingdom", "None", [], 0, 182, "Grand Line", ARCS.DRUMISLAND),
+    addCharacter(["Boa Hancock", "Pirate Empress"], "Female", "Kuja Pirates", "Paramecia", [armament, observation, conquerors], 1659000000, 191, "Calm Belt", ARCS.AMAZONLILY),
     addCharacter(["Donquixote Rosinante", "Corazon"], "Male", "Marines", "Paramecia", [], 0, 293, "Red Line", ARCS.DRESSROSA),
     addCharacter(["Crocus"], "Male", "Roger Pirates", "None", [observation], 0, 203, "Grand Line", ARCS.REVERSEMOUNTAIN),
     addCharacter(["Bartholomew Kuma"], "Male", "Revolutionary Army", "Paramecia", [armament, observation], 296000000, 689, "South Blue", ARCS.JAYA),
@@ -299,6 +299,9 @@ export const CHARACTERS = [
     addCharacter(["Helmeppo"], "Male", "Marines","None",[armament], 100000000, 179, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Zeff"], "Male", "Baratie", "None", [], 3, 189, "East Blue", ARCS.BARATIE),
     addCharacter(["Pearl"], "Male", "Krieg Pirates", "None", [], 0, 239, "East Blue", ARCS.BARATIE),
+    addCharacter(["Igaram"], "Male", "Alabasta Kingdom", "None", [], 0, 218, "Grand Line", ARCS.WHISKYPEAK),
+    addCharacter(["Pell"], "Male", "Alabasta Kingdom", "Zoan", [], 0, 189, "Grand Line", ARCS.ALABASTA),
+
 
 ]
 

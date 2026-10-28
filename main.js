@@ -195,7 +195,7 @@ input.addEventListener("keyup", (e) => {
     characterdatalist.style.display = "block"
     let filtered_character_list = LIST_OF_CHARACTER_NAMES.filter(name => 
       name.toUpperCase()
-          .split(/[\s-]+/)
+          .split(/[\s-]+/) // Splits words with hyphens and spaces between
           .some(word => word.startsWith(input.value.toUpperCase()))
     )
     updateDropdownList(filtered_character_list)
