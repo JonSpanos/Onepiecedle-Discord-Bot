@@ -148,6 +148,7 @@ export const CHARACTERS = [
     addCharacter(["Hack"],"Male","Revolutionary Army","None",[],0,280,"Grand Line",ARCS.DRESSROSA),
     
     // Charlotte Family
+    addCharacter(["Streusen"], "Male", "Big Mom Pirates", "Paramecia", [], 0, 140, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Pudding", "Pudding"], "Female", "Charlotte Family", "Paramecia", [], 0, 166, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Charlotte Katakuri", "Katakuri"], "Male", "Charlotte Family", "Paramecia", [armament, observation, conquerors], 1057000000, 509, "Grand Line", ARCS.WCI),
     addCharacter(["Charlotte Perospero", "Perospero"], "Male", "Charlotte Family", "Paramecia", [armament, observation], 700000000, 333, "Grand Line", ARCS.WCI),
@@ -292,6 +293,8 @@ export const CHARACTERS = [
     addCharacter(["Cocoa", "Fake Robin"], "Female", "Fake Straw Hat Crew", "None", [], 0, 138, "East Blue", ARCS.RETURNTOSABAODY),
     addCharacter(["Turco", "Fake Franky"], "Male", "Fake Straw Hat Crew", "None", [], 0, 258, "East Blue", ARCS.RETURNTOSABAODY),
     
+    addCharacter(["Kaya"], "Female", "None", "None", [], 0, 169, "East Blue", ARCS.SYRUPVILLAGE),
+    addCharacter(["Leo"], "Male", "Tontatta Kingdom", "Paramecia", [], 0, 23, "Grand Line", ARCS.DRESSROSA),
     
 ]
 
