@@ -296,6 +296,10 @@ export const CHARACTERS = [
     addCharacter(["Kaya"], "Female", "None", "None", [], 0, 169, "East Blue", ARCS.SYRUPVILLAGE),
     addCharacter(["Leo"], "Male", "Tontatta Kingdom", "Paramecia", [], 0, 23, "Grand Line", ARCS.DRESSROSA),
     
+    addCharacter(["Helmeppo"], "Male", "Marines","None",[armament], 100000000, 179, "East Blue", ARCS.ROMANCEDAWN),
+    addCharacter(["Zeff"], "Male", "Baratie", "None", [], 3, 189, "East Blue", ARCS.BARATIE),
+    addCharacter(["Pearl"], "Male", "Krieg Pirates", "None", [], 0, 239, "East Blue", ARCS.BARATIE),
+
 ]
 
 function addCharacter(name, gender, affiliation, df, haki, bounty, height, origin, firstarc) {
