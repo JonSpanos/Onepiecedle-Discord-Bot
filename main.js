@@ -187,15 +187,16 @@ input.onfocus = function () {
   characterdatalist.style.visibility = "visible"
 }
 
-// When you click enter
 input.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter") { // When you select to submit a guess
     let first_element_in_dropdown = characterdatalist.childNodes[0].textContent
     attemptCharacter(first_element_in_dropdown)
   } else { // Dropdown filtering
     characterdatalist.style.display = "block"
     let filtered_character_list = LIST_OF_CHARACTER_NAMES.filter(name => 
-      name.toUpperCase().startsWith(input.value.toUpperCase())
+      name.toUpperCase()
+          .split(/[\s-]+/)
+          .some(word => word.startsWith(input.value.toUpperCase()))
     )
     updateDropdownList(filtered_character_list)
   }
