@@ -33,7 +33,10 @@ export async function onRequestPost(context) {
         "Authorization": `Bot ${context.env.DISCORD_TOKEN}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ content: new_message }),
+      body: JSON.stringify({ 
+        content: new_message,
+        flags: 4096 // Sends message silently
+      }),
     }
   );
 
