@@ -301,6 +301,7 @@ export const CHARACTERS = [
     addCharacter(["Pearl"], "Male", "Krieg Pirates", "None", [], 0, 239, "East Blue", ARCS.BARATIE),
     addCharacter(["Igaram"], "Male", "Alabasta Kingdom", "None", [], 0, 218, "Grand Line", ARCS.WHISKYPEAK),
     addCharacter(["Pell"], "Male", "Alabasta Kingdom", "Zoan", [], 0, 189, "Grand Line", ARCS.ALABASTA),
+    addCharacter(["Caribou"], "Male", "Caribou Pirates", "Logia", [], 210000000, 228, "North Blue", ARCS.RETURNTOSABAODY),
 
 
 ]
