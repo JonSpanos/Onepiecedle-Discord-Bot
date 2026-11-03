@@ -3,7 +3,7 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { CHARACTERS } from "./src/constants.js"
 import { buildHeaders, pushGuessToRow } from "./src/board.js"
 import { game_state } from "./src/game_state.js";
-import {addToLeaderboard, getGuesses, guess, sendMessage} from "./src/api_calls.js"
+import {getGuesses, guess} from "./src/api_calls.js"
 import "./style.css";
 
 // Images

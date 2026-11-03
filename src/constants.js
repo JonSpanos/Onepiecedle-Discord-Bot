@@ -71,8 +71,9 @@ export const CHARACTERS = [
     addCharacter(["Foxy"], "Male", "Foxy Pirates", "Paramecia", [], 24000000, 180, "South Blue", ARCS.LONGRING),
     addCharacter(["Rob Lucci"], "Male", "CP0", "Zoan", [armament, observation], 0, 212, "Grand Line", ARCS.WATER7),
     addCharacter(["Gecko Moria"], "Male", "Thriller Bark Pirates", "Paramecia", [], 320000000, 692, "West Blue", ARCS.THRILLERBARK),
+    addCharacter(["Magellan"], "Male", "Impel Down", "Paramecia", [], 0, 491, "Grand Line", ARCS.IMPELDOWN),
     addCharacter(["Hody Jones"], "Male", "New Fish-Man Pirates", "None", [], 0, 331, "Grand Line", ARCS.FISHMANISLAND),
-    addCharacter(["Caesar Clown", "Master"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
+    addCharacter(["Caesar Clown"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
     addCharacter(["Donquixote Doflamingo"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation, conquerors], 340000000, 305, "Red Line", ARCS.JAYA),
     addCharacter(["Kurozumi Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
 
@@ -185,7 +186,7 @@ export const CHARACTERS = [
     addCharacter(["Makino"], "Female", "Partys Bar", "None", [], 0, 166, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Gaimon"], "Male", "None", "None", [], 0, 130, "East Blue", ARCS.SYRUPVILLAGE),
     addCharacter(["Nojiko"], "Female", "None", "None", [], 0, 170, "East Blue", ARCS.ARLONGPARK),
-    addCharacter(["Jaguar D. Saul"], "Male", "Walrus School", "None", [], 0, 1950, "South Blue", ARCS.ENIESLOBBY),
+    addCharacter(["Jaguar D. Saul", "Jaguar Saul"], "Male", "Walrus School", "None", [], 0, 1950, "South Blue", ARCS.ENIESLOBBY),
     addCharacter(["Vinsmoke Yonji"], "Male", "Vinsmoke Family", "None", [], 0, 194, "North Blue", ARCS.WCI),
     addCharacter(["Vinsmoke Reiju"], "Female", "Vinsmoke Family", "None", [], 0, 173, "North Blue", ARCS.WCI),
     addCharacter(["Vinsmoke Niji"], "Male", "Vinsmoke Family", "None", [], 0, 185, "North Blue", ARCS.WCI),
@@ -302,9 +303,21 @@ export const CHARACTERS = [
     addCharacter(["Igaram"], "Male", "Alabasta Kingdom", "None", [], 0, 218, "Grand Line", ARCS.WHISKYPEAK),
     addCharacter(["Pell"], "Male", "Alabasta Kingdom", "Zoan", [], 0, 189, "Grand Line", ARCS.ALABASTA),
     addCharacter(["Caribou"], "Male", "Caribou Pirates", "Logia", [], 210000000, 228, "North Blue", ARCS.RETURNTOSABAODY),
-
-
+    addCharacter(["Mont Blanc Noland"], "Male", "Lvneel Kingdom", "None", [], 0, 220, "North Blue", ARCS.SKYPIEA),
+    addCharacter(["Koza"], "Male", "Alabasta Kingdom", "None", [], 0, 177, "Grand Line", ARCS.ALABASTA),
+    addCharacter(["Speed"], "Female", "Beasts Pirates", "Artificial Zoan", [armament, observation], 0, 298, "Grand Line", ARCS.WANOCOUNTRY),
+    addCharacter(["Wyper"], "Male", "Shandia", "None", [], 0, 183, "Sky Island", ARCS.SKYPIEA),
+    addCharacter(["Giolla"], "Female", "Donquixote Pirates", "Paramecia", [], 0, 221, "North Blue", ARCS.PUNKHAZARD),
+    addCharacter(["Hibari"], "Female", "Marines", "None", [armament, observation], 200000000, 165, "North Blue", ARCS.EGGHEAD),
+    addCharacter(["Nico Olvia"], "Female", "Ohara Archaeologists", "None", [], 79000000, 186, "West Blue", ARCS.ENIESLOBBY),
+    addCharacter(["Lao G"], "Male", "Donquixote Pirates", "None", [], 61000000, 157, "North Blue", ARCS.PUNKHAZARD),
+    addCharacter(["Kuina", "Shimotsuki Kuina"], "Female", "Shimotsuki Family", "None", [], 0, 150, "East Blue", ARCS.ROMANCEDAWN),
+    addCharacter(["Rosward Charlos"], "Male", "World Government", "None", [], 0, 230, "Red Line", ARCS.SABAODY),
+    addCharacter(["Conis"], "Female", "Pumpkin Cafe", "None", [], 0, 176, "Grand Line", ARCS.SKYPIEA),
+    addCharacter(["Urouge"], "Male", "Fallen Monk Pirates", "None", [], 108000000, 388, "Sky Island", ARCS.SABAODY),
+    addCharacter(["Pica"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation], 99000000, 470, "North Blue", ARCS.DRESSROSA)
 ]
+
 
 function addCharacter(name, gender, affiliation, df, haki, bounty, height, origin, firstarc) {
     return Object.freeze({

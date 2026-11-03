@@ -1,6 +1,6 @@
 import { CHARACTERS, STATUS } from "./constants"
 import { game_state } from "./game_state.js"
-import {addToLeaderboard, getGuesses, guess, sendMessage} from "./api_calls.js"
+import {addToLeaderboard, sendMessage} from "./api_calls.js"
 
 // Images
 import arm_haki from "../img/Armament.png"
