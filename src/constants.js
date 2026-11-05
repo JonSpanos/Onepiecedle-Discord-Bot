@@ -221,6 +221,7 @@ export const CHARACTERS = [
     addCharacter(["Trebol"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation], 0, 349, "North Blue", ARCS.DRESSROSA),
     addCharacter(["Sugar"], "Female", "Donquixote Pirates", "Paramecia", [], 0, 110, "North Blue", ARCS.PUNKHAZARD),
     addCharacter(["Senor Pink"], "Male", "Donquixote Pirates", "Paramecia", [], 0, 244, "North Blue", ARCS.DRESSROSA),
+    addCharacter(["Pica"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation], 99000000, 470, "North Blue", ARCS.DRESSROSA),
     addCharacter(["Kyros", "Toy Soldier"], "Male", "Corrida Colosseum", "None", [], 0, 298, "Grand Line", ARCS.DRESSROSA),
     addCharacter(["Koby", "Coby"], "Male", "Marines", "None", [armament, observation], 500000000, 167, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Hiriluk"], "Male", "None", "None", [], 0, 213, "Grand Line", ARCS.DRUMISLAND),
@@ -293,10 +294,8 @@ export const CHARACTERS = [
     addCharacter(["Nora Gitsune", "Fake Chopper"], "Male", "Fake Straw Hat Crew", "None", [], 0, 103, "East Blue", ARCS.RETURNTOSABAODY),
     addCharacter(["Cocoa", "Fake Robin"], "Female", "Fake Straw Hat Crew", "None", [], 0, 138, "East Blue", ARCS.RETURNTOSABAODY),
     addCharacter(["Turco", "Fake Franky"], "Male", "Fake Straw Hat Crew", "None", [], 0, 258, "East Blue", ARCS.RETURNTOSABAODY),
-    
+
     addCharacter(["Kaya"], "Female", "None", "None", [], 0, 169, "East Blue", ARCS.SYRUPVILLAGE),
-    addCharacter(["Leo"], "Male", "Tontatta Kingdom", "Paramecia", [], 0, 23, "Grand Line", ARCS.DRESSROSA),
-    
     addCharacter(["Helmeppo"], "Male", "Marines","None",[armament], 100000000, 179, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Zeff"], "Male", "Baratie", "None", [], 3, 189, "East Blue", ARCS.BARATIE),
     addCharacter(["Pearl"], "Male", "Krieg Pirates", "None", [], 0, 239, "East Blue", ARCS.BARATIE),
@@ -315,7 +314,16 @@ export const CHARACTERS = [
     addCharacter(["Rosward Charlos"], "Male", "World Government", "None", [], 0, 230, "Red Line", ARCS.SABAODY),
     addCharacter(["Conis"], "Female", "Pumpkin Cafe", "None", [], 0, 176, "Grand Line", ARCS.SKYPIEA),
     addCharacter(["Urouge"], "Male", "Fallen Monk Pirates", "None", [], 108000000, 388, "Sky Island", ARCS.SABAODY),
-    addCharacter(["Pica"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation], 99000000, 470, "North Blue", ARCS.DRESSROSA)
+  
+    // Strawhat Grand Fleet
+    addCharacter(["Leo"], "Male", "Tontatta Kingdom", "Paramecia", [], 0, 23, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Bartolomeo"], "Male", "Barto Club", "Paramecia", [], 200000000, 220, "East Blue", ARCS.DRESSROSA),
+    addCharacter(["Hajrudin"], "Male", "New Giant Warrior Pirates", "None", [], 0, 2200, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Sai"], "Male", "Happo Navy", "None", [armament, observation], 210000000, 242, "West Blue", ARCS.DRESSROSA),
+    addCharacter(["Orlumbus"], "Male", "Yonta Maria Grand Fleet", "None", [], 148000000, 480, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Ideo"], "Male", "Ideo Pirates", "None", [], 0, 225, "Grand Line", ARCS.DRESSROSA),
+    addCharacter(["Cavendish", "Hakuba"], "Male", "Beautiful Pirates", "None", [armament, observation], 330000000, 208, "Grand Line", ARCS.DRESSROSA)
+
 ]
 
 
