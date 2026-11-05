@@ -124,16 +124,11 @@ async function loadBoardState() {
     guess_data = await getGuesses(game_state.auth.user.id)
   }
 
-  let j = 0
   for (const guessed_char of guess_data.guessed_characters) {
-    setTimeout(() => { // Delayed appending for animation
-        attemptCharacter(guessed_char.character_name)
-      }, 250*j)
-      j++
+    await attemptCharacter(guessed_char.character_name)
   }
-  setTimeout(() => {
-    game_state.haltInput = false
-  }, 250*j)
+  
+  game_state.haltInput = false
 
 }
 
@@ -188,6 +183,7 @@ input.onfocus = function () {
 }
 
 input.addEventListener("keyup", (e) => {
+  if (game_state.haltInput) return
   if (e.key === "Enter") { // When you select to submit a guess
     let first_element_in_dropdown = characterdatalist.childNodes[0].textContent
     attemptCharacter(first_element_in_dropdown)

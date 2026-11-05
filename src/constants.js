@@ -73,7 +73,7 @@ export const CHARACTERS = [
     addCharacter(["Gecko Moria"], "Male", "Thriller Bark Pirates", "Paramecia", [], 320000000, 692, "West Blue", ARCS.THRILLERBARK),
     addCharacter(["Magellan"], "Male", "Impel Down", "Paramecia", [], 0, 491, "Grand Line", ARCS.IMPELDOWN),
     addCharacter(["Hody Jones"], "Male", "New Fish-Man Pirates", "None", [], 0, 331, "Grand Line", ARCS.FISHMANISLAND),
-    addCharacter(["Caesar Clown"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
+    addCharacter(["Caesar Clown", "Gangster Gastino"], "Male", "NEO MADS", "Logia", [], 0, 309, "Grand Line", ARCS.PUNKHAZARD),
     addCharacter(["Donquixote Doflamingo"], "Male", "Donquixote Pirates", "Paramecia", [armament, observation, conquerors], 340000000, 305, "Red Line", ARCS.JAYA),
     addCharacter(["Kurozumi Orochi"], "Male", "Wano Country", "Zoan", [], 0, 350, "Grand Line", ARCS.WANOCOUNTRY),
 
@@ -254,7 +254,7 @@ export const CHARACTERS = [
     addCharacter(["Paulie"],"Male","Galley-La Company","None",[],0,195,"Grand Line",ARCS.WATER7),
     addCharacter(["Iceburg"],"Male","Galley-La Company","None",[],0,199,"Grand Line",ARCS.WATER7),
     addCharacter(["Kalgara"],"Male","Shandia","None",[observation],0,222,"Grand Line",ARCS.SKYPIEA),
-    addCharacter(["Gan Fall", "Fall"], "Male", "God of Skypiea", "None", [observation], 0, 180, "Grand Line", ARCS.SKYPIEA),
+    addCharacter(["Gan Fall"], "Male", "God of Skypiea", "None", [observation], 0, 180, "Grand Line", ARCS.SKYPIEA),
     addCharacter(["Chimney"],"Female","Kokoro","None",[],0,115,"Grand Line",ARCS.WATER7),
     addCharacter(["Chew"],"Male","Arlong Pirates","None",[],5500000,257,"Grand Line",ARCS.ARLONGPARK),
     addCharacter(["Kuroobi"],"Male","Arlong Pirates","None",[],9000000,252,"Grand Line",ARCS.ARLONGPARK),
@@ -262,7 +262,7 @@ export const CHARACTERS = [
     addCharacter(["Hogback"],"Male","Thriller Bark Pirates","None",[],0,223,"West Blue",ARCS.THRILLERBARK),
     addCharacter(["Absalom"],"Male","Thriller Bark Pirates","Paramecia",[],0,195,"West Blue",ARCS.THRILLERBARK),
     addCharacter(["Perona"],"Female","Thriller Bark Pirates","Paramecia",[],0,160,"West Blue",ARCS.THRILLERBARK),
-    addCharacter(["Victoria Cindry", "Cindry"],"Female","Thriller Bark Pirates","None",[],0,188,"West Blue",ARCS.THRILLERBARK),
+    addCharacter(["Victoria Cindry"],"Female","Thriller Bark Pirates","None",[],0,188,"West Blue",ARCS.THRILLERBARK),
     addCharacter(["Chouchou"],"Male","Hocker","None",[],0,40,"East Blue",ARCS.ORANGETOWN),
     addCharacter(["Gedatsu"],"Male","Ukkari Hot-Spring Island","None",[observation],0,220,"Sky Islands",ARCS.SKYPIEA),
     addCharacter(["Satori"],"Male","God's Army","None",[observation],0,179,"Sky Islands",ARCS.SKYPIEA),
@@ -325,7 +325,8 @@ export const CHARACTERS = [
     addCharacter(["Urouge"], "Male", "Fallen Monk Pirates", "None", [], 108000000, 388, "Sky Island", ARCS.SABAODY),
     addCharacter(["Little Oars Jr."], "Male", "Little Pirates", "None", [], 550000000, 60000, "Grand Line", ARCS.MARINEFORD),
     addCharacter(["Oars"], "Male", "Thriller Bark Pirates", "None", [], 0, 67000, "Grand Line", ARCS.THRILLERBARK),
-    
+    addCharacter(["Fisher Tiger"], "Male", "Sun Pirates", "None", [], 230000000, 520, "Grand Line", ARCS.AMAZONLILY),
+    addCharacter(["Hannyabal"], "Male", "Impel Down", "None", [], 0, 309, "South Blue", ARCS.IMPELDOWN),
 ]
 
 
