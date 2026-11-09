@@ -23,7 +23,10 @@ export async function onRequestPost(context) {
 
     // Prepare statement
     const result = await context.env.DB.prepare(`
-      SELECT character_name FROM DailyGuesses WHERE day = ? AND user_id = ?`)
+      SELECT character_name 
+      FROM DailyGuesses 
+      WHERE day = ? AND user_id = ?
+      ORDER BY rowid ASC`)
       .bind(day, user_id)
       .all();
     

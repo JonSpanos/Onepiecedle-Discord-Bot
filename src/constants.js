@@ -333,12 +333,12 @@ export const CHARACTERS = [
     addCharacter(["Shirahoshi", "Mermaid Princess"], "Female", "Neptune Family", "None", [observation], 0, 1187, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Rebecca"], "Female", "Dressrosa", "None", [observation], 0, 171, "Grand Line", ARCS.DRESSROSA),
     addCharacter(["Sadi"], "Female", "Impel Down", "None", [], 0, 183, "Grand Line", ARCS.IMPELDOWN),
-    addCharacter(["Marianne"], "Female", "New Spiders Cafe", "None", [], 29000000, 145, "North Blue", ARCS.LITTLEGARDEN),
+    addCharacter(["Marianne", "Miss Goldenweek"], "Female", "New Spiders Cafe", "None", [], 29000000, 145, "North Blue", ARCS.LITTLEGARDEN),
     addCharacter(["Marguerite", "Margaret"], "Female", "Kuja Pirates", "None", [armament, observation], 0, 178, "Grand Line", ARCS.AMAZONLILY),
     addCharacter(["Rocks D. Xebec"], "Male", "Rocks Pirates", "None", [armament, observation, conquerors], 0, 435, "West Blue", ARCS.WANO),
     addCharacter(["King Neptune"], "Male", "Neptune Family", "None", [], 0, 1220, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Pekoms"], "Male", "Big Mom Pirates", "Zoan", [armament, observation], 330000000, 232, "Grand Line", ARCS.FISHMANISLAND),
-    addCharacter(["Queen Otohime"], "Female", "Neptune Family", "None", [observation], 0, 224, "Grand Line", ARCS.FISHMANISLAND)
+    addCharacter(["Queen Otohime"], "Female", "Neptune Family", "None", [observation], 0, 224, "Grand Line", ARCS.FISHMANISLAND),
 ]
 
 
