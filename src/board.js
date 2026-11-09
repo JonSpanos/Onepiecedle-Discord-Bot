@@ -10,7 +10,7 @@ import con_haki from "/img/Conqueror.png"
 export function buildHeaders() {
   let infoConversions = {
     df: "Devil Fruit",
-    name: "Name",
+    name: "Character",
     gender: "Gender",
     affiliation: "Affiliation",
     haki: "Haki",

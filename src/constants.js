@@ -56,7 +56,7 @@ export const CHARACTERS = [
     addCharacter(["Nico Robin", "Miss All Sunday", "Devil Child", "Ms. All Sunday"], "Female", "Strawhat Pirates", "Paramecia", [], 930000000, 188, "West Blue", ARCS.WHISKYPEAK),
     addCharacter(["Franky", "Iron Man", "Cyborg", "Cutty Flam"], "Male", "Strawhat Pirates", "None", [], 944000000, 240, "Grand Line", ARCS.WATER7),
     addCharacter(["Brook", "Soul King", "Humming Brook"], "Male", "Strawhat Pirates", "Paramecia", [], 383000000, 277, "West Blue", ARCS.THRILLERBARK),
-    addCharacter(["Jinbe", "Knight of the Sea", "First Son of the Sea", "Boss Jinbe"], "Male", "Strawhat Pirates", "None", [armament, observation], 1100000000, 301, "Grand Line", ARCS.IMPELDOWN),
+    addCharacter(["Jinbe", "Jimbei", "Knight of the Sea", "First Son of the Sea", "Boss Jinbe"], "Male", "Strawhat Pirates", "None", [armament, observation], 1100000000, 301, "Grand Line", ARCS.IMPELDOWN),
     
     // Misc. Major Villains (Unless they fit better in more specific groupings like Admirals)
     addCharacter(["Alvida", "Iron-Mace Alvida"], "Female", "Cross Guild", "Paramecia", [], 5000000, 198, "East Blue", ARCS.ROMANCEDAWN),
@@ -165,9 +165,9 @@ export const CHARACTERS = [
     // Mokomo Dukedom
     addCharacter(["Carrot"], "Female", "Mokomo Dukedom", "None", [], 0, 161, "Grand Line", ARCS.ZOU),
     addCharacter(["Pedro"], "Male", "Mokomo Dukedom", "None", [armament, observation], 382000000, 233, "Grand Line", ARCS.ZOU),
-    addCharacter(["Nekomamushi", "Cat Viper"], "Male", "Mokomo Dukedom", "None", [armament, observation], 0, 522, "Grand Line", ARCS.ZOU),
+    addCharacter(["Cat Viper", "Nekomamushi"], "Male", "Mokomo Dukedom", "None", [armament, observation], 0, 522, "Grand Line", ARCS.ZOU),
     addCharacter(["Wanda"], "Female", "Mokomo Dukedom", "None", [], 0, 181, "Grand Line", ARCS.ZOU),
-    addCharacter(["Inuarashi", "Dogstorm"], "Male", "Mokomo Dukedom", "None", [armament, observation], 0, 511, "Grand Line", ARCS.ZOU),
+    addCharacter(["Dogstorm", "Inuarashi"], "Male", "Mokomo Dukedom", "None", [armament, observation], 0, 511, "Grand Line", ARCS.ZOU),
 
     addCharacter(["Hina"],"Female","Marines","Paramecia",[],200000000,181,"West Blue",ARCS.ALABASTA),
     addCharacter(["Sentomaru"], "Male", "Marines", "None", [armament, observation], 500000000, 279, "Grand Line", ARCS.SABAODY),
@@ -280,20 +280,20 @@ export const CHARACTERS = [
     addCharacter(["York"], "Female", "Marines", "None", [], 0, 482, "Grand Line", ARCS.EGGHEAD),
     
     // Seraphim
-    addCharacter(["S-Snake"],"Female","Seraphim","Paramecia",[armament, observation],0,208,"Grand Line",ARCS.EGGHEAD),
-    addCharacter(["S-Bear"],"Male","Seraphim","Paramecia",[armament, observation],0,660,"Grand Line",ARCS.EGGHEAD),
-    addCharacter(["S-Hawk"],"Male","Seraphim","Paramecia",[armament, observation],0,212,"Grand Line",ARCS.EGGHEAD),
-    addCharacter(["S-Shark"],"Male","Seraphim","Paramecia",[armament, observation],0,320,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Snake", "Seraphim Boa Hancock", "Seraphim Hancock"],"Female","Seraphim","Paramecia",[armament, observation],0,208,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Bear", "Seraphim Bartholomew Kuma", "Seraphim Kuma"],"Male","Seraphim","Paramecia",[armament, observation],0,660,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Hawk", "Seraphim Mihawk"],"Male","Seraphim","Paramecia",[armament, observation],0,212,"Grand Line",ARCS.EGGHEAD),
+    addCharacter(["S-Shark", "Seraphim Jinbei", "Seraphim Jimbei"],"Male","Seraphim","Paramecia",[armament, observation],0,320,"Grand Line",ARCS.EGGHEAD),
     
     // Fake Straw Hats
-    addCharacter(["Demalo Black", "Fake Luffy"], "Male", "Fake Straw Hat Crew", "None", [], 26000000, 245, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Manjaro", "Fake Zoro"], "Male", "Fake Straw Hat Crew", "None", [], 0, 202, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Chocolat", "Fake Nami"], "Female", "Fake Straw Hat Crew", "None", [], 0, 181, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Mounblutain", "Fake Usopp"], "Male", "Fake Straw Hat Crew", "None", [], 0, 294, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Drip", "Fake Sanji"], "Male", "Fake Straw Hat Crew", "None", [], 0, 208, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Nora Gitsune", "Fake Chopper"], "Male", "Fake Straw Hat Crew", "None", [], 0, 103, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Cocoa", "Fake Robin"], "Female", "Fake Straw Hat Crew", "None", [], 0, 138, "East Blue", ARCS.RETURNTOSABAODY),
-    addCharacter(["Turco", "Fake Franky"], "Male", "Fake Straw Hat Crew", "None", [], 0, 258, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Luffy", "Demalo Black"], "Male", "Fake Straw Hat Crew", "None", [], 26000000, 245, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Zoro", "Manjaro"], "Male", "Fake Straw Hat Crew", "None", [], 0, 202, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Nami", "Chocolat"], "Female", "Fake Straw Hat Crew", "None", [], 0, 181, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Usopp", "Mounblutain"], "Male", "Fake Straw Hat Crew", "None", [], 0, 294, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Sanji", "Drip" ], "Male", "Fake Straw Hat Crew", "None", [], 0, 208, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Chopper", "Nora Gitsune"], "Male", "Fake Straw Hat Crew", "None", [], 0, 103, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Robin", "Cocoa"], "Female", "Fake Straw Hat Crew", "None", [], 0, 138, "East Blue", ARCS.RETURNTOSABAODY),
+    addCharacter(["Fake Franky", "Turco"], "Male", "Fake Straw Hat Crew", "None", [], 0, 258, "East Blue", ARCS.RETURNTOSABAODY),
 
     // Strawhat Grand Fleet
     addCharacter(["Leo"], "Male", "Tontatta Kingdom", "Paramecia", [], 0, 23, "Grand Line", ARCS.DRESSROSA),
@@ -339,6 +339,7 @@ export const CHARACTERS = [
     addCharacter(["King Neptune"], "Male", "Neptune Family", "None", [], 0, 1220, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Pekoms"], "Male", "Big Mom Pirates", "Zoan", [armament, observation], 330000000, 232, "Grand Line", ARCS.FISHMANISLAND),
     addCharacter(["Queen Otohime"], "Female", "Neptune Family", "None", [observation], 0, 224, "Grand Line", ARCS.FISHMANISLAND),
+    addCharacter(["Jabra"], "Male", "CP0", "Zoan", [armament, observation], 0, 212, "North Blue", ARCS.ENIESLOBBY),
 ]
 
 
