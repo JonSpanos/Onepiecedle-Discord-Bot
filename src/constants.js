@@ -322,7 +322,7 @@ export const CHARACTERS = [
     addCharacter(["Kuina", "Shimotsuki Kuina"], "Female", "Shimotsuki Family", "None", [], 0, 150, "East Blue", ARCS.ROMANCEDAWN),
     addCharacter(["Rosward Charlos"], "Male", "World Government", "None", [], 0, 230, "Red Line", ARCS.SABAODY),
     addCharacter(["Conis"], "Female", "Pumpkin Cafe", "None", [], 0, 176, "Grand Line", ARCS.SKYPIEA),
-    addCharacter(["Urouge"], "Male", "Fallen Monk Pirates", "None", [], 108000000, 388, "Grand Line", ARCS.SABAODY),
+    addCharacter(["Urouge"], "Male", "Fallen Monk Pirates", "Paramecia", [], 108000000, 388, "Grand Line", ARCS.SABAODY),
     addCharacter(["Little Oars Jr."], "Male", "Little Pirates", "None", [], 550000000, 60000, "Grand Line", ARCS.MARINEFORD),
     addCharacter(["Oars"], "Male", "Thriller Bark Pirates", "None", [], 0, 67000, "Grand Line", ARCS.THRILLERBARK),
     addCharacter(["Fisher Tiger"], "Male", "Sun Pirates", "None", [], 230000000, 520, "Grand Line", ARCS.AMAZONLILY),

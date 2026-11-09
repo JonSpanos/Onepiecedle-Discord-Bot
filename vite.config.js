@@ -15,6 +15,9 @@ export default defineConfig({
   server: {
     allowedHosts: [
       "tunnel.bridgefandom.com",
-    ]
+    ],
+    headers: {
+      "cache-control" : "no-store"
+    }
   },
 });

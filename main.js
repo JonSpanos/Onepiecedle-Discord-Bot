@@ -66,7 +66,7 @@ function updateDropdownList(names) {
 
   characterdatalist.innerHTML = ``
 
-  for (let name of names) {
+  for (let name of names.sort()) {
     let list_option = document.createElement("li")
     list_option.classList.add("custom-dropdown-list-item")
     list_option.value = name
@@ -76,6 +76,14 @@ function updateDropdownList(names) {
       characterdatalist.style.visibility = "hidden"
       attemptCharacter(list_option.textContent)
     })
+    
+    let img = document.createElement("img")
+    img.src = `../img/characters/${name.toLowerCase()}.webp`
+    img.className = "custom-dropdown-list-img"
+    
+    img.onerror = () => img.remove()
+
+    list_option.prepend(img)
     characterdatalist.append(list_option)
   }
 }
@@ -159,17 +167,9 @@ document.querySelector('#app').innerHTML = `
 
 // Build data list for dropdown
 let characterdatalist = document.getElementById("custom-dropdown-options")
-let LIST_OF_CHARACTER_NAMES = []
-
-for (let character of CHARACTERS) {
-  for (let name of character.name) {
-    LIST_OF_CHARACTER_NAMES.push(name)
-  }
-}
-LIST_OF_CHARACTER_NAMES = LIST_OF_CHARACTER_NAMES.sort()
 
 // Add list of names to dropdown menu
-updateDropdownList(LIST_OF_CHARACTER_NAMES)
+updateDropdownList(CHARACTERS.map(character => character.name[0]))
 
 // Build row headers
 buildHeaders()

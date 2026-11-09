@@ -75,12 +75,22 @@ h1 {
   width:100%;
 }
 
+.custom-dropdown-list-item:has(img) {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  align-items: center;
+  text-align: center;
+}
+
 .custom-dropdown-list-item:hover{
   background-color: rgb(65, 65, 65);
 }
 
 .custom-dropdown-list-img {
-  
+  height:100%;
+  width:100%;
+  aspect-ratio: 1;
+  flex-shrink: 0;
 }
 
 #characterlist {

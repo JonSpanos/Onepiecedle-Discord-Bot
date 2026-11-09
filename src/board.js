@@ -87,7 +87,7 @@ export async function pushGuessToRow(characterEvaluation) {
 
     if (info === "name") {
       let img = document.createElement("img")
-      img.src = `../img/${text.textContent.toLowerCase()}.webp`
+      img.src = `../img/characters/${text.textContent.toLowerCase()}.webp`
       img.className = "character-portrait"
       
       img.onerror = () => img.remove()
