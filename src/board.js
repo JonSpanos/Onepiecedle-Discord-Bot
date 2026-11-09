@@ -3,9 +3,9 @@ import { game_state } from "./game_state.js"
 import {addToLeaderboard, sendMessage} from "./api_calls.js"
 
 // Images
-import arm_haki from "../img/Armament.png"
-import obs_haki from "../img/Observation.png"
-import con_haki from "../img/Conqueror.png"
+import arm_haki from "/img/Armament.png"
+import obs_haki from "/img/Observation.png"
+import con_haki from "/img/Conqueror.png"
 
 export function buildHeaders() {
   let infoConversions = {
@@ -87,7 +87,7 @@ export async function pushGuessToRow(characterEvaluation) {
 
     if (info === "name") {
       let img = document.createElement("img")
-      img.src = `../img/characters/${text.textContent.toLowerCase()}.webp`
+      img.src = `/img/characters/${text.textContent.toLowerCase()}.webp`
       img.className = "character-portrait"
       
       img.onerror = () => img.remove()

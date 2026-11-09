@@ -78,7 +78,7 @@ function updateDropdownList(names) {
     })
     
     let img = document.createElement("img")
-    img.src = `../img/characters/${name.toLowerCase()}.webp`
+    img.src = `/img/characters/${name.toLowerCase()}.webp`
     img.className = "custom-dropdown-list-img"
     
     img.onerror = () => img.remove()
