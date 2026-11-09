@@ -189,12 +189,15 @@ input.addEventListener("keyup", (e) => {
     attemptCharacter(first_element_in_dropdown)
   } else { // Dropdown filtering
     characterdatalist.style.display = "block"
-    let filtered_character_list = LIST_OF_CHARACTER_NAMES.filter(name => {
-      let parts = [name, ...name.split(/[\s-]+/)] // Contains itself and each work (Monkey D. Luffy -> "Monkey", "D.", "Luffy", "Monkey D. Luffy")
-      let query = input.value.toUpperCase()
+    let query = input.value.toUpperCase()
 
-      return parts.some(part => part.toUpperCase().startsWith(query))
-    })
+    let filtered_character_list = CHARACTERS.filter(character => {
+      return character.name.some(name => {
+        let parts = [name, ...name.split(/[\s-]+/)] // Contains itself and each work (Monkey D. Luffy -> "Monkey", "D.", "Luffy", "Monkey D. Luffy")
+
+        return parts.some(part => part.toUpperCase().startsWith(query))
+      })
+    }).map(character => character.name[0])
     updateDropdownList(filtered_character_list)
   }
 })

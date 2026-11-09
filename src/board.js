@@ -85,6 +85,16 @@ export async function pushGuessToRow(characterEvaluation) {
       box.append(arrow)
     }
 
+    if (info === "name") {
+      let img = document.createElement("img")
+      img.src = `../img/${text.textContent.toLowerCase()}.webp`
+      img.className = "character-portrait"
+      
+      img.onerror = () => img.remove()
+
+      box.append(img)
+    }
+
     box.append(text)
 
     setTimeout(() => { // Delayed appending for animation
