@@ -1,6 +1,6 @@
 import { CHARACTERS, STATUS } from "./constants"
 import { game_state } from "./game_state.js"
-import {addToLeaderboard, sendMessage} from "./api_calls.js"
+import { addToLeaderboard, sendMessage } from "./api_calls.js"
 
 // Images
 import arm_haki from "/img/Armament.png"
@@ -19,13 +19,13 @@ export function buildHeaders() {
     origin: "Origin",
     firstarc: "First Arc",
   }
-  
+
   let row = buildRow() // header row
 
   for (let info of Object.keys(CHARACTERS[0])) {
     let box = document.createElement("div")
     box.textContent = infoConversions[info]
-    
+
     box.className = "header"
     row.append(box)
   }
@@ -34,7 +34,7 @@ export function buildHeaders() {
 export async function pushGuessToRow(characterEvaluation) {
   let curr_emoji = ""
   let row = buildRow() // Create new row for guess
-  let box_anim_offset_idx = 0 
+  let box_anim_offset_idx = 0
 
   const char = characterEvaluation.guessed_character
 
@@ -50,9 +50,9 @@ export async function pushGuessToRow(characterEvaluation) {
       if (char[info].length === 0) text.textContent = "None"; else text.textContent = ""
       char[info].forEach(haki => {
         let img = document.createElement("img")
-        if (haki === "Armament") {img.src = arm_haki}
-        else if (haki === "Observation") {img.src = obs_haki}
-        else if (haki === "Conquerors") {img.src = con_haki}
+        if (haki === "Armament") { img.src = arm_haki }
+        else if (haki === "Observation") { img.src = obs_haki }
+        else if (haki === "Conquerors") { img.src = con_haki }
         img.className = "icon"
         box.append(img)
       })
@@ -69,7 +69,7 @@ export async function pushGuessToRow(characterEvaluation) {
       box.className = "box partial"
       curr_emoji = ":yellow_square:"
     }
-    
+
     // Assign arrows
     if ((info === "bounty" || info === "height" || info == "firstarc") && curr_emoji != ":green_square:") {
       // Rewrite box properties and emoji
@@ -89,7 +89,7 @@ export async function pushGuessToRow(characterEvaluation) {
       let img = document.createElement("img")
       img.src = `/img/characters/${text.textContent.toLowerCase()}.webp`
       img.className = "character-portrait"
-      
+
       img.onerror = () => img.remove()
 
       box.append(img)
@@ -99,7 +99,7 @@ export async function pushGuessToRow(characterEvaluation) {
 
     setTimeout(() => { // Delayed appending for animation
       row.append(box)
-    }, 250*box_anim_offset_idx)
+    }, 250 * box_anim_offset_idx)
     box_anim_offset_idx++
 
     game_state.rowEmoji += curr_emoji
@@ -108,49 +108,49 @@ export async function pushGuessToRow(characterEvaluation) {
   game_state.rowEmoji += curr_emoji
   game_state.rowEmoji += "\n"
 
-    // If correct guess
-    if (characterEvaluation.correct) {
-        // Only enters this statement if adding previous guesses. Don't want repeat leaderboard/message calls
-        if (game_state.haltInput) { 
-            game_state.gameWon = true
-            return
-        }
-        win()
+  // If correct guess
+  if (characterEvaluation.correct) {
+    // Only enters this statement if adding previous guesses. Don't want repeat leaderboard/message calls
+    if (game_state.haltInput) {
+      game_state.gameWon = true
+      return
     }
+    win()
+  }
 }
 
 function assignText(info, characterEvaluation) {
-    const char = characterEvaluation.guessed_character
+  const char = characterEvaluation.guessed_character
 
-    // Custom text values
-    if (info == "name") return characterEvaluation.guessed_character[info][0] // Choose first name
-    if (info == "bounty") return abbrNum(char[info], 3)
-    if (info == "height") { // Convert text to feet and inches
-      let {feet, inches} = convertCMtoFeetInches(char[info])
-      return feet + "'" + inches + '"'
-    }
-    return characterEvaluation.guessed_character[info] // else
+  // Custom text values
+  if (info == "name") return characterEvaluation.guessed_character[info][0] // Choose first name
+  if (info == "bounty") return abbrNum(char[info], 3)
+  if (info == "height") { // Convert text to feet and inches
+    let { feet, inches } = convertCMtoFeetInches(char[info])
+    return feet + "'" + inches + '"'
+  }
+  return characterEvaluation.guessed_character[info] // else
 }
 
 async function win() {
-    if (game_state.auth != null) {
-      // Add name to leaderboard
-      await addToLeaderboard(game_state.auth.user.id, game_state.guesses.length)
+  if (game_state.auth != null) {
+    // Add name to leaderboard
+    await addToLeaderboard(game_state.auth.user.id, game_state.guesses.length)
 
-      // Send message in chat about victory!
-      await sendMessage(game_state.discordSdk.channelId.toString(), game_state.auth.user.global_name + ": guessed " + game_state.guesses.length + " times.\n"+game_state.rowEmoji)
-    }
-    game_state.gameWon = true
+    // Send message in chat about victory!
+    await sendMessage(game_state.discordSdk.channelId.toString(), game_state.auth.user.global_name + ": guessed " + game_state.guesses.length + " times.\n" + game_state.rowEmoji)
+  }
+  game_state.gameWon = true
 }
 
 // Helpers
 function buildRow() {
-    let board = document.getElementById("guess_board");
-    let row = document.createElement("div")
-    row.className = "row"
-    
-    board.appendChild(row)
-    return row;
+  let board = document.getElementById("guess_board");
+  let row = document.createElement("div")
+  row.className = "row"
+
+  board.appendChild(row)
+  return row;
 }
 
 function convertCMtoFeetInches(numInCM) {

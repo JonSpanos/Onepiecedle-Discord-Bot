@@ -30,6 +30,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -72,7 +73,7 @@ h1 {
 .custom-dropdown-list-item {
   background-color: gray;
   box-sizing: border-box;
-  width:100%;
+  width: 100%;
 }
 
 .custom-dropdown-list-item:has(img) {
@@ -82,27 +83,28 @@ h1 {
   text-align: center;
 }
 
-.custom-dropdown-list-item:hover{
+.custom-dropdown-list-item:hover {
   background-color: rgb(65, 65, 65);
 }
 
 .custom-dropdown-list-img {
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
   aspect-ratio: 1;
   flex-shrink: 0;
 }
 
 #characterlist {
-  position:absolute;
-  top:10%;
+  position: absolute;
+  top: 10%;
   left: 0;
   width: 10%;
-  z-index:1000; /* always visible */
+  z-index: 1000;
+  /* always visible */
 }
 
 .logo {
-  margin-top:-100px;
+  margin-top: -100px;
   height: 6em;
   padding: 0em;
   will-change: filter;
@@ -120,9 +122,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -131,7 +135,8 @@ button:focus-visible {
 #guess_board {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* space between rows */
+  gap: 10px;
+  /* space between rows */
   max-height: 60vh;
   overflow-y: scroll;
 }
@@ -139,11 +144,12 @@ button:focus-visible {
 .row {
   display: inline-flex;
   flex-direction: row;
-  gap: 10px; /* space between boxes */
+  gap: 10px;
+  /* space between boxes */
 }
 
 .header {
-  position:relative;
+  position: relative;
   width: 75px;
   height: 30px;
   display: flex;
@@ -153,14 +159,15 @@ button:focus-visible {
   margin-bottom: 0px;
   justify-content: center;
   align-items: center;
-  flex-shrink:0;
+  flex-shrink: 0;
   flex-grow: 1;
 }
 
 .box {
   width: 75px;
   height: 75px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds depth */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  /* Adds depth */
   background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
@@ -168,13 +175,15 @@ button:focus-visible {
   border: 1px solid #000;
   border-radius: 8%;
   font-weight: bold;
-  animation: flip 1s ease-in-out forwards; /* Adding animation */
-  transform-style: preserve-3d; /* Required for 3D flipping */
-  flex-shrink:0;
+  animation: flip 1s ease-in-out forwards;
+  /* Adding animation */
+  transform-style: preserve-3d;
+  /* Required for 3D flipping */
+  flex-shrink: 0;
 }
 
 .character-portrait {
-  position:absolute;
+  position: absolute;
   z-index: 3;
   border: 1px solid #000;
   border-radius: 8%;
@@ -185,38 +194,44 @@ button:focus-visible {
 
 @keyframes flip {
   0% {
-    transform: rotateY(180deg); /* Initial state */
+    transform: rotateY(180deg);
+    /* Initial state */
     opacity: 0%
   }
+
   50% {
     opacity: 0%
   }
+
   100% {
-    transform: rotateY(360deg); /* Complete flip */
+    transform: rotateY(360deg);
+    /* Complete flip */
     opacity: 100%
   }
 }
 
 .downarrow {
-  position:absolute;
+  position: absolute;
   z-index: 1;
-  opacity:25%;
+  opacity: 25%;
   width: 0px;
   height: 0px;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-top: 50px solid rgb(0, 0, 0);  /* creates down arrow */
+  border-top: 50px solid rgb(0, 0, 0);
+  /* creates down arrow */
 }
 
 .uparrow {
-  position:absolute;
+  position: absolute;
   z-index: 1;
-  opacity:25%;
+  opacity: 25%;
   width: 0;
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-bottom: 50px solid rgb(0, 0, 0);  /* creates down arrow */
+  border-bottom: 50px solid rgb(0, 0, 0);
+  /* creates down arrow */
 }
 
 .icon {
@@ -246,9 +261,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -259,21 +276,26 @@ button:focus-visible {
   body {
     font-size: 12px;
   }
+
   #info_header {
     font-size: 10px;
   }
+
   .header {
     width: 15vw;
     height: 3vh;
   }
+
   .box {
     width: 15vw;
-    height: 15vw; /* using vw here to keep the box uniform */
+    height: 15vw;
+    /* using vw here to keep the box uniform */
   }
+
   #guess_board {
     width: 80vw;
     height: 50vh;
-    overflow:scroll;
+    overflow: scroll;
   }
 
 }

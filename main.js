@@ -3,7 +3,7 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 import { CHARACTERS } from "./src/constants.js"
 import { buildHeaders, pushGuessToRow } from "./src/board.js"
 import { game_state } from "./src/game_state.js";
-import {getGuesses, guess} from "./src/api_calls.js"
+import { getGuesses, guess } from "./src/api_calls.js"
 import "./style.css";
 
 // Images
@@ -39,7 +39,7 @@ async function setupDiscordSdk() {
       code,
     }),
   });
-  
+
   const { access_token } = await response.json();
 
   // Authenticate with Discord client (using the access_token)
@@ -76,11 +76,11 @@ function updateDropdownList(names) {
       characterdatalist.style.visibility = "hidden"
       attemptCharacter(list_option.textContent)
     })
-    
+
     let img = document.createElement("img")
     img.src = `/img/characters/${name.toLowerCase()}.webp`
     img.className = "custom-dropdown-list-img"
-    
+
     img.onerror = () => img.remove()
 
     list_option.prepend(img)
@@ -109,12 +109,12 @@ async function attemptCharacter(guessed_name) {
     h3.textContent = "Authentication to Discord servers have failed."
     return;
   }
-  
+
   game_state.guesses.push(data.guessed_character)
   document.getElementById("guess_total").textContent = "Number of guesses: " + game_state.guesses.length
-  
+
   pushGuessToRow(data)
-  
+
   document.getElementById("guess_input").value = "" // Wipe input
   characterdatalist.style.display = "none"
 
@@ -135,7 +135,7 @@ async function loadBoardState() {
   for (const guessed_char of guess_data.guessed_characters) {
     await attemptCharacter(guessed_char.character_name)
   }
-  
+
   game_state.haltInput = false
 
 }

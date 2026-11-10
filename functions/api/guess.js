@@ -1,8 +1,8 @@
-import { ARCS, CHARACTERS, STATUS} from "../../src/constants.js";
+import { ARCS, CHARACTERS, STATUS } from "../../src/constants.js";
 
 // Helper functions
 function getRandomDaily() {
-    const estDateStr = new Date().toLocaleDateString('en-US', {timeZone: 'America/New_York'})
+    const estDateStr = new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' })
 
 
     let hash = 0;
@@ -16,21 +16,21 @@ function getRandomDaily() {
 }
 
 function compareArrays(a, b) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length !== b.length) return false;
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
 
-  for (var i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
+    for (var i = 0; i < a.length; ++i) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
 }
 
 function convertCMtoFeetInches(numInCM) {
-  const totalInches = numInCM / 2.54;             // 1 inch = 2.54 cm
-  const feet = Math.floor(totalInches / 12); // 1 foot = 12 inches
-  const inches = Math.round(totalInches % 12); // remaining inches
-  return { feet, inches };
+    const totalInches = numInCM / 2.54;             // 1 inch = 2.54 cm
+    const feet = Math.floor(totalInches / 12); // 1 foot = 12 inches
+    const inches = Math.round(totalInches % 12); // remaining inches
+    return { feet, inches };
 }
 
 function evaluateInfo(char, info, correctCharacter) {
@@ -41,7 +41,7 @@ function evaluateInfo(char, info, correctCharacter) {
     if (info == "bounty" || info == "height") {
         if (char[info] < correctCharacter[info]) return STATUS.GREATER
         if (char[info] > correctCharacter[info]) return STATUS.LESSER
-    } 
+    }
 
     if (info == "firstarc") { // Check which is first in array
         const list_of_arcs = Object.values(ARCS)
@@ -50,29 +50,29 @@ function evaluateInfo(char, info, correctCharacter) {
     }
 
     if (info === "height") { // Compare feet/inch conversion rather than cm
-        let {feet, inches} = convertCMtoFeetInches(char[info])
-        let {feet_to_guess, inches_to_guess} = convertCMtoFeetInches(correctCharacter[info])
+        let { feet, inches } = convertCMtoFeetInches(char[info])
+        let { feet_to_guess, inches_to_guess } = convertCMtoFeetInches(correctCharacter[info])
 
         if (feet == feet_to_guess && inches == inches_to_guess) return STATUS.CORRECT
         if (char[info] < correctCharacter[info]) return STATUS.GREATER
         if (char[info] > correctCharacter[info]) return STATUS.LESSER
 
-    } 
-    
+    }
+
     if (info === "haki") {
         if (char[info].length === 0 && correctCharacter[info].length === 0) { // No haki
             return STATUS.CORRECT
-        } else if ( char[info].length === 0 || correctCharacter[info].length === 0 ) { // Only one has no haki
+        } else if (char[info].length === 0 || correctCharacter[info].length === 0) { // Only one has no haki
             return STATUS.INCORRECT
         } else {
-            if(compareArrays(char[info], correctCharacter[info])) { // Identical Haki Types
+            if (compareArrays(char[info], correctCharacter[info])) { // Identical Haki Types
                 return STATUS.CORRECT
             } else { // Both have haki
                 return STATUS.GREATER // Partial in this instance.
             }
         }
     }
-    
+
     return STATUS.INCORRECT
 }
 
@@ -87,7 +87,7 @@ export async function onRequestPost(context) {
     if (!user_id || !guessed_character_name) {
         return new Response("Missing fields", { status: 400 });
     }
-    
+
     // Check who the correct character for the day is...
     const correctCharacter = CHARACTERS[getRandomDaily()]
 
@@ -103,19 +103,19 @@ export async function onRequestPost(context) {
 
         PRIMARY KEY (user_id, day, character_name)
     );`).run();
-    
+
     // Get day
-    const estDateStr = new Date().toLocaleDateString('en-US', {timeZone: 'America/New_York'})
-    const day = new Date(estDateStr).toISOString().slice(0,10); // ex: 2026-06-08
+    const estDateStr = new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' })
+    const day = new Date(estDateStr).toISOString().slice(0, 10); // ex: 2026-06-08
     await context.env.DB.prepare(`
       INSERT OR IGNORE INTO DailyGuesses (user_id, day, character_name)
       VALUES (?, ?, ?)`)
-      .bind(user_id, day, guessed_character_name).run();
-    
+        .bind(user_id, day, guessed_character_name).run();
+
     const guessed_character = CHARACTERS.find(character => character.name.includes(guessed_character_name))
 
     console.log("Building response")
-    
+
     return new Response(JSON.stringify({
         success: true,
         guessed_character,
