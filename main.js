@@ -66,7 +66,7 @@ function updateDropdownList(names) {
 
   characterdatalist.innerHTML = ``
 
-  for (let name of names.sort()) {
+  for (let name of names) {
     let list_option = document.createElement("li")
     list_option.classList.add("custom-dropdown-list-item")
     list_option.value = name
@@ -169,7 +169,7 @@ document.querySelector('#app').innerHTML = `
 let characterdatalist = document.getElementById("custom-dropdown-options")
 
 // Add list of names to dropdown menu
-updateDropdownList(CHARACTERS.map(character => character.name[0]))
+updateDropdownList(CHARACTERS.map(character => character.name[0]).sort())
 
 // Build row headers
 buildHeaders()
@@ -191,13 +191,23 @@ input.addEventListener("keyup", (e) => {
     characterdatalist.style.display = "block"
     let query = input.value.toUpperCase()
 
-    let filtered_character_list = CHARACTERS.filter(character => {
-      return character.name.some(name => {
-        let parts = [name, ...name.split(/[\s-]+/)] // Contains itself and each work (Monkey D. Luffy -> "Monkey", "D.", "Luffy", "Monkey D. Luffy")
-
+    const list_of_full_name_matches = CHARACTERS.filter(character => character.name.some(name => {
+      return name.toUpperCase().startsWith(query)
+    }))
+    
+    const list_of_partial_name_matches = CHARACTERS.filter(character => !list_of_full_name_matches.includes(character) && character.name.some(name => {
+        let parts = name.split(/[\s-]+/) // Contains itself and each work (Monkey D. Luffy -> "Monkey", "D.", "Luffy")
         return parts.some(part => part.toUpperCase().startsWith(query))
       })
-    }).map(character => character.name[0])
+    )
+
+    let filtered_character_list = [
+      ... list_of_full_name_matches.map(character=>character.name[0]).sort(),
+      ... list_of_partial_name_matches.map(character=>character.name[0]).sort()
+    ]
+
+
+    
     updateDropdownList(filtered_character_list)
   }
 })
