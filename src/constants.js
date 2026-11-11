@@ -306,7 +306,7 @@ export const CHARACTERS = [
 
     addCharacter(["Kaya"], "Female", "None", "None", [], 0, 169, "East Blue", ARCS.SYRUPVILLAGE),
     addCharacter(["Helmeppo"], "Male", "Marines", "None", [armament], 100000000, 179, "East Blue", ARCS.ROMANCEDAWN),
-    addCharacter(["Zeff"], "Male", "Baratie", "None", [], 3, 189, "East Blue", ARCS.BARATIE),
+    addCharacter(["Zeff"], "Male", "Baratie", "None", [], 0, 189, "East Blue", ARCS.BARATIE),
     addCharacter(["Pearl"], "Male", "Krieg Pirates", "None", [], 0, 239, "East Blue", ARCS.BARATIE),
     addCharacter(["Igaram"], "Male", "Alabasta Kingdom", "None", [], 0, 218, "Grand Line", ARCS.WHISKYPEAK),
     addCharacter(["Pell"], "Male", "Alabasta Kingdom", "Zoan", [], 0, 189, "Grand Line", ARCS.ALABASTA),
