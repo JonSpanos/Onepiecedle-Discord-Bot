@@ -137,7 +137,7 @@ export const CHARACTERS = [
     addCharacter(["Bepo"], "Male", "Heart Pirates", "None", [], 1500, 240, "Grand Line", ARCS.SABAODY),
 
     // Kid Pirates
-    addCharacter(["Eustass Kid", "Kid", "Useless Mid"], "Male", "Kid Pirates", "Paramecia", [armament, observation], 3000000000, 205, "South Blue", ARCS.SABAODY),
+    addCharacter(["Eustass Kid", "Kid", "Useless Mid"], "Male", "Kid Pirates", "Paramecia", [armament, observation, conquerors], 3000000000, 205, "South Blue", ARCS.SABAODY),
     addCharacter(["Killer", "Kamazo"], "Male", "Kid Pirates", "Zoan", [armament, observation], 200000000, 195, "South Blue", ARCS.SABAODY),
 
     // Revolutionaries
