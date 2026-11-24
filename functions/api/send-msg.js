@@ -1,15 +1,26 @@
+import { DateTime } from "luxon";
+
 export async function onRequestPost(context) {
 
   const { channelId, message } = await context.request.json();
 
+  // Get time
+  const nowEastern = DateTime
+		.fromMillis(controller.scheduledTime, { zone: "utc" })
+		.setZone("America/New_York");
+	const today = nowEastern.startOf("day");
+	const startUtc = today.toUTC().toISO();
+	const endUtc = today.plus({ days: 1 }).toUTC().toISO();
+
   // Get best performing player for the day from leaderboard!
-  const best_player = await context.env.DB.prepare(`
+  const best_player = await env.DB.prepare(`
     SELECT user_id, guesses
     FROM Leaderboard
-    WHERE DATE(time_completed) = DATE('now', 'localtime')
+    WHERE datetime(time_completed) >= datetime(?)
+      AND datetime(time_completed) < datetime(?)
     ORDER BY guesses ASC, time_completed ASC
     LIMIT 1
-  `).first();
+  `).bind(startUtc, endUtc).first();
 
   // Fetch username from ID
   const global_name_response = await fetch(
