@@ -6,14 +6,14 @@ export async function onRequestPost(context) {
 
   // Get time
   const nowEastern = DateTime
-		.fromMillis(controller.scheduledTime, { zone: "utc" })
+		.fromMillis(Date.now(), { zone: "utc" })
 		.setZone("America/New_York");
 	const today = nowEastern.startOf("day");
 	const startUtc = today.toUTC().toISO();
 	const endUtc = today.plus({ days: 1 }).toUTC().toISO();
 
   // Get best performing player for the day from leaderboard!
-  const best_player = await env.DB.prepare(`
+  const best_player = await context.env.DB.prepare(`
     SELECT user_id, guesses
     FROM Leaderboard
     WHERE datetime(time_completed) >= datetime(?)
